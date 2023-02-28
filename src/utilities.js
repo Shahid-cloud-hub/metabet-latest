@@ -8,7 +8,6 @@ import {
   PRIVATE_KEY,
 } from "./constants";
 import MetabetMask from "./abis/MetabetMask.json";
-import MetabetMask2 from "./abis/MetabetMask2.json";
 import BEP20 from "./abis/ERC20.json";
 
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
@@ -20,12 +19,12 @@ const connectedContract = new ethers.Contract(
 );
 const connectedContract2 = new ethers.Contract(
   BET_ADDRESS2,
-  MetabetMask2.abi,
+  MetabetMask.abi,
   provider2
 );
 
 const EventOdd = async (id, win, token) => {
-  if (token === METABET_ADDRESS) {
+  if (token === "") {
     const Txn = await connectedContract2.getPoolTotalTeam(win, token, id);
     return Number(Txn.toString());
   }
@@ -34,32 +33,38 @@ const EventOdd = async (id, win, token) => {
 };
 
 const Airdrop = async (address) => {
-  const signer = new ethers.Wallet(PRIVATE_KEY, provider2);
-  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider2);
+  const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
 
   const balance = Number(await contract.balanceOf(address));
-  if (balance / 1e18 === 0) {
-    await contract
-      .connect(signer)
-      .transfer(address, ethers.utils.parseUnits("50"));
-    return;
-  }
-
+  await contract
+    .connect(signer)
+    .airdrop(address, ethers.utils.parseUnits("50"));
   return;
 };
 
+const MetabetBalance = async (address) => {
+  const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
+  const balance = await contract.balanceOf(address);
+
+  return Number(balance.toString()) / 1e18;
+}
+
 const FreeBetToken = async (address) => {
-  const signer = new ethers.Wallet(PRIVATE_KEY, provider2);
-  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider2);
+  const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
+
+  const balance = Number(await contract.balanceOf(address));
   await contract
     .connect(signer)
-    .transfer(address, ethers.utils.parseUnits("50"));
+    .airdrop(address, ethers.utils.parseUnits("50"));
   alert("50 Metabet Token Airdropped Successfully!!!");
   return;
 };
 
 const PoolTotal = async (id, token) => {
-  if (token === METABET_ADDRESS) {
+  if (token === "") {
     const Txn = await connectedContract2.getPoolTotal(token, id);
     return Number(Txn.toString());
   }
@@ -68,13 +73,16 @@ const PoolTotal = async (id, token) => {
 };
 
 const PoolSize = async (id, token) => {
-  if (token !== METABET_ADDRESS) {
-    const Txn = await connectedContract.getPoolSize(token, id);
+
+  if (token === "") {
+    const Txn = await connectedContract2.getPoolSize(token, id);
     return Number(Txn.toString());
   }
-  const Txn = await connectedContract2.getPoolSize(token, id);
+  
+  const Txn = await connectedContract.getPoolSize(token, id);
   return Number(Txn.toString());
-};
+}
+  
 
 const AllBets = async (id) => {
   const Txn = await connectedContract.getBets(id);
@@ -88,6 +96,7 @@ const Utils = {
   AllBets,
   Airdrop,
   FreeBetToken,
+  MetabetBalance
 };
 
 export default Utils;
