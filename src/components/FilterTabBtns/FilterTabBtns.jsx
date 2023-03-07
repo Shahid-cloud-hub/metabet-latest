@@ -10,7 +10,7 @@ const FilterTabBtns = ({ tabItem, callback }) => {
     callback(lowerCaseName);
   };
 
-  console.log("first", check);
+  // console.log("first", check);
   return (
     <>
       {tabItem.map((item) => {

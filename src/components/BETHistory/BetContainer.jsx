@@ -4,18 +4,12 @@ import { betData } from "./BetData";
 import { useSelector } from "react-redux";
 import Utils from "../../utilities.js";
 
-const BetContainer = () => {
-  const [bets, setBets] = useState([]);
+const BetContainer = ({ bets }) => {
+  // const [bets, setBets] = useState([]);
   const [tReturned, setTReturned] = useState(0);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
-  if (metaMaskAddress.metaMaskAddress) {
-    Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
-      function (data) {
-        setBets(data);
-      }
-    );
-  }
+  console.log("first", bets);
 
   const totalBets = (array, field, value) => {
     const filter = array.filter((item) => item[field] === value);

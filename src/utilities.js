@@ -132,7 +132,7 @@ const Utils = {
   MetabetBalance,
   getTotalReturned,
   userStatus,
-  AllUserBets_id
+  AllUserBets_id,
 };
 
 export default Utils;
