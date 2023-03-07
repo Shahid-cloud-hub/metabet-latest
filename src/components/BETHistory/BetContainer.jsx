@@ -16,6 +16,8 @@ const BetContainer = ({ bets }) => {
     return filter;
   };
 
+  //console.log(totalBets(bets,1, "0x0000000000000000000000000000000000000000"))
+
   const totalValue = (array, field) => {
     let sum = 0;
     array.forEach((item) => (sum += Number(item[field])));

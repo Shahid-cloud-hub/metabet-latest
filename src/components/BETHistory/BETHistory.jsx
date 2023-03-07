@@ -14,6 +14,10 @@ const BetHistory = () => {
   const [bets, setBets] = useState([]);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
+  if(getName == null){
+    setGetName("all");
+  }
+
   const callback = (name) => {
     setGetName(name);
   };
@@ -21,6 +25,8 @@ const BetHistory = () => {
   let group = "ufc";
   // let title = "trending-event";
   let title = getName;
+
+  console.log(getName)
 
   const { fetchData, response } = useAxios();
 
@@ -41,27 +47,30 @@ const BetHistory = () => {
     (item) => item?.event?.highlights[0]?.stats?.data?.smart_contract_id
   );
 
-  // console.log("Bet History", hightlightData);
-  // console.log("particular name", getName);
+  const arrData = hightlightData == undefined ? [] : Object.values(hightlightData);
 
-  const getAllBets = (name) => {
-    if (metaMaskAddress.metaMaskAddress) {
-      if (name === "all") {
+  console.log(arrData)
+  if(arrData != []){
+  Utils.AllUserBets_id(
+    metaMaskAddress.metaMaskAddress.toString(), arrData).then(function (data) {
+    console.log("test", data);
+  });}
+
+  if (metaMaskAddress.metaMaskAddress) {
+    if (getName != "all") {
+      Utils.AllUserBets_id(
+        metaMaskAddress.metaMaskAddress.toString(), arrData).then(function (data) {
+        setBets(data);
+      });
+    } else if(getName == "dxy" || getName == "ufc" || getName == "ethereum"
+      || getName == "bitcoin" || getName == "football" || getName == "cricket"){
         Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
           function (data) {
             setBets(data);
           }
         );
-      } else {
-        Utils.AllUserBets_id(
-          metaMaskAddress.metaMaskAddress.toString(),
-          hightlightData
-        ).then(function (data) {
-          setBets(data);
-        });
       }
-    }
-  };
+  }
 
   // if (metaMaskAddress.metaMaskAddress) {
   //   Utils.AllUserBets_id(
@@ -72,12 +81,7 @@ const BetHistory = () => {
   //   });
   // }
 
-  useEffect(() => {
-    getAllBets(getName);
-  }, []);
-  console.log("checking bets", bets);
-
-  // console.log(bets);
+  console.log(bets);
 
   return (
     <>
