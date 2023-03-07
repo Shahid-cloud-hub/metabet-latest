@@ -6,9 +6,13 @@ import { Filter } from "../ActiveBet/ActiveBetData";
 import FilterTabBtns from "../FilterTabBtns/FilterTabBtns";
 import DisplayFilterTab from "../FilterTabBtns/DisplayFilterTab";
 import { useAxios } from "../../hooks/useAxios";
+import { useSelector } from "react-redux";
+import Utils from "../../utilities.js";
 
 const BetHistory = () => {
   const [getName, setGetName] = useState(null);
+  const [bets, setBets] = useState([]);
+  const metaMaskAddress = useSelector((state) => state.wallet);
 
   const callback = (name) => {
     setGetName(name);
@@ -44,6 +48,16 @@ const BetHistory = () => {
   const show = response?.length;
 
   console.log(show, "test");
+
+  if (metaMaskAddress.metaMaskAddress) {
+    Utils.AllUserBets_id(metaMaskAddress.metaMaskAddress.toString(), hightlightData).then(
+      function (data) {
+        setBets(data);
+      }
+    );
+  }
+
+  console.log(bets);
 
   return (
     <>

@@ -104,6 +104,7 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
         } else {
           const provider = new ethers.providers.Web3Provider(ethereum);
           const signer = provider.getSigner();
+          const address = await signer.getAddress();
           const tokenContract = new ethers.Contract(_token, BEP20.abi, signer);
           const connectedContract = new ethers.Contract(
             BET_ADDRESS,
@@ -140,6 +141,10 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
           await Txn.wait();
           setEnterAmount(0);
           alert("Working down");
+          if(_token == METABET_ADDRESS){
+            await Utils.Airdrop(address);
+            alert("you've successfully gotten free token");
+          }
           return;
         }
       } else {
