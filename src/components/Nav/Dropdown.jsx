@@ -35,12 +35,14 @@ function Dropdown() {
       ? "0.0000"
       : truncateEthAddress(metaMaskAddress.metaMaskAddress.toString());
 
-    if(metaMaskAddress.metaMaskAddress){
-      Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(function (data) {
+  if (metaMaskAddress.metaMaskAddress) {
+    Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(
+      function (data) {
         data === 0 ? setBalance(null) : setBalance(data);
         console.log(data);
-      });
-    }
+      }
+    );
+  }
 
   useEffect(() => {
     // console.log(metaMaskAddress, "metaMaskAddress");
@@ -50,16 +52,20 @@ function Dropdown() {
     <>
       <div className="dropdown">
         <div className="dropdown-ai">
-          <div className="openai">
+          {/* <div className="openai">
             <img src={openai} alt="openai" />
             <div>
               <span>32%</span>
               <img src={verified} alt="verified" />
             </div>
-          </div>
+          </div> */}
           <div className="right-nav">
             <label>
-              <input type="text" name="name" placeholder= {balance == null ? "0.00" : balance}  />
+              <input
+                type="text"
+                name="name"
+                placeholder={balance == null ? "0.00" : balance}
+              />
               <img src={foxCircle} alt="foxCircle" />
             </label>
             <label id="label-nav">
@@ -99,7 +105,7 @@ function Dropdown() {
                 </clipPath>
               </defs>
             </svg>
-          </div>{" "}
+          </div>
           {!metaMaskAddress.metaMaskAddress ? (
             <div
               className="connect-btn"
@@ -122,8 +128,8 @@ function Dropdown() {
                 <img src={navFox} alt="Wallet-image" />
               )}
             </div>
-          )}{" "}
-        </div>{" "}
+          )}
+        </div>
       </div>
     </>
   );

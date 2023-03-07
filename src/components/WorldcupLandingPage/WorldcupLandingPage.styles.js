@@ -242,3 +242,47 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const DashContainer = styled("div")`
+  width: 100%;
+
+  .card-parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .card-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    span {
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    button {
+      border: none;
+      padding: 5px 30px;
+      font-size: 18px;
+      color: #ffff;
+      cursor: pointer;
+      max-width: 133px;
+      background: #fc4c1e;
+      border-radius: 100px;
+      -webkit-text-decoration: none;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
+    }
+  }
+`;

@@ -1,73 +1,67 @@
-import React, { useEffect } from "react";
-import { Container } from "./WorldcupLandingPage.styles";
-import Web3 from "../../assets/images/landingpage/Web3.png";
-import BookiesFee from "../../assets/images/landingpage/BookiesFee.png";
-import UfcRed from "../../assets/images/landingpage/UfcRed.png";
-import KYC from "../../assets/images/landingpage/KYC.png";
-import TruthToken from "../../assets/images/landingpage/TruthToken.png";
-import BankCards from "../../assets/images/landingpage/BankCards.png";
-import PoliticsImg from "../../assets/images/landingpage/politics.png";
-import FreeBetsImg from "../../assets/images/landingpage/freeBets.png";
-
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-import {
-  metaMaskConnection,
-  metaMaskDisconnect,
-} from "../../redux/walletConnect/walletConnectSlice";
+import React from "react";
+import { useEffect } from "react";
+import { useAxios } from "../../hooks/useAxios";
+import Loading from "../Loading/Loading";
+import { DashContainer } from "./WorldcupLandingPage.styles";
+import BetBTN from "../../assets/images/bet-new-btn.png";
+import { useNavigate } from "react-router-dom";
 
 const WorldcupLandingPage = () => {
-  const metaMaskAddress = useSelector((state) => state.wallet);
-  const dispatch = useDispatch();
+  const { fetchData, response, loading } = useAxios();
+  const navigate = useNavigate();
 
-  useEffect(() => {}, [metaMaskAddress]);
+  const getEvent = async () => {
+    await fetchData({
+      method: "GET",
+      url: `https://dull-puce-wildebeest-belt.cyclic.app/group`,
+      // url: `https://dull-puce-wildebeest-belt.cyclic.app/getGroup/ufc/ufc-fight-night/63fef129dc670b46ffaa1128`,
+    });
+  };
 
+  useEffect(() => {
+    getEvent();
+  }, []);
+
+  console.log("res", response);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <Container>
-      <div className="img_free_bets">
-        <img src={FreeBetsImg} alt="Free Bets" />
-      </div>
-      <div className="top">
-        <NavLink to="/Football">
-          <img src={Web3} className="img_1" alt="Web3" />
-        </NavLink>
-      </div>
-      <div className="middle">
-        <NavLink to="/UFC">
-          <img src={UfcRed} alt="UfcRed" />
-        </NavLink>
-        {!metaMaskAddress.metaMaskAddress ? (
-          <div
-            className="connect-wallet-img"
-            onClick={() => dispatch(metaMaskConnection())}
-          >
-            <img src={TruthToken} alt="TruthToken" />
-          </div>
-        ) : (
-          <div
-            className="connect-wallet-img"
-            onClick={() => dispatch(metaMaskDisconnect())}
-          >
-            <img src={TruthToken} alt="TruthToken" />
-          </div>
-        )}
-        <NavLink to="/Bitcoin">
-          <img src={KYC} alt="KYC" />
-        </NavLink>
-      </div>
-      <div className="end">
-        <NavLink to="/Ethereum">
-          <img src={BankCards} alt="BankCards" />
-        </NavLink>
-        <NavLink to="/Politics">
-          <img src={PoliticsImg} alt="BankCards" />
-        </NavLink>
-        <NavLink to="/Cricket">
-          <img src={BookiesFee} alt="BookiesFee" />
-        </NavLink>
-      </div>
-    </Container>
+    <DashContainer>
+      {loading ? (
+        <div className="loading">
+          <Loading />
+        </div>
+      ) : (
+        <div className="card-parent">
+          {response?.map((item, index) => (
+            <>
+              <div className="card" key={index}>
+                <img
+                  src={item?.event?.banner}
+                  alt={item?.event?.title}
+                  style={{ width: "90%" }}
+                  onClick={() =>
+                    navigate(
+                      `${item?.group}/${item?.event?.title}/statistics/${item?.event?.highlights[0]?._id}`,
+                      {
+                        state: item?.event?.highlights[0]?._id,
+                      }
+                    )
+                  }
+                />
+                {/* <div className="card-btn">
+                  <div>
+                    <img src={BetBTN} alt="Bet Now" />
+                  </div>
+                </div> */}
+              </div>
+            </>
+          ))}
+        </div>
+      )}
+    </DashContainer>
   );
 };
 

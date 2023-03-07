@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import { ContainerBet } from "./BetContainer.styles";
 import { betData } from "./BetData";
 import { useSelector } from "react-redux";
@@ -9,43 +9,44 @@ const BetContainer = () => {
   const [tReturned, setTReturned] = useState(0);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
-  if(metaMaskAddress.metaMaskAddress){
-    Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(function (data) {
-      setBets(data);
-    });
+  if (metaMaskAddress.metaMaskAddress) {
+    Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
+      function (data) {
+        setBets(data);
+      }
+    );
   }
 
   const totalBets = (array, field, value) => {
-    const filter =  array.filter((item) => item[field] === value);
+    const filter = array.filter((item) => item[field] === value);
     return filter;
   };
 
-  const totalValue = (array, field) => {  
-    let sum = 0; 
-    array.forEach((item) => sum += Number(item[field]));
+  const totalValue = (array, field) => {
+    let sum = 0;
+    array.forEach((item) => (sum += Number(item[field])));
     return sum / 1e18;
   };
 
-  const totalReturned = (user, token)=> {
-    Utils.getTotalReturned(user,token).then(function(data){
+  const totalReturned = (user, token) => {
+    Utils.getTotalReturned(user, token).then(function (data) {
       setTReturned(Number(data));
     });
 
     return tReturned;
-  }
+  };
 
   const totalWon = (array) => {
     const arr = [];
     array.forEach((item) => {
-    try{
-      Utils.userStatus(item[0],item[2]).then(function(data){
-        arr.push(data);
-      });
-    }
-    catch(e){
-      console.log(e)
-    }
-  });
+      try {
+        Utils.userStatus(item[0], item[2]).then(function (data) {
+          arr.push(data);
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    });
 
     console.log(arr);
   };
@@ -73,13 +74,26 @@ const BetContainer = () => {
                   <div className="bet-td">
                     <span>{item.td_1}</span>
                     <span>
-                    {metaMaskAddress.metaMaskAddress == null ? item.td_2 : totalBets(bets,1, item.addr).length}
+                      {metaMaskAddress.metaMaskAddress == null
+                        ? item.td_2
+                        : totalBets(bets, 1, item.addr).length}
                     </span>
                     <span>{item.td_3}</span>
                     <span>{item.td_4}</span>
-                    <span>{metaMaskAddress.metaMaskAddress == null ? item.td_6 : totalValue(totalBets(bets,1, item.addr),3)}</span>
-                    <span>{metaMaskAddress.metaMaskAddress == null || 
-                      item.addr == "" ? item.td_6 : totalReturned(metaMaskAddress.metaMaskAddress.toString(), item.addr)}</span>
+                    <span>
+                      {metaMaskAddress.metaMaskAddress == null
+                        ? item.td_6
+                        : totalValue(totalBets(bets, 1, item.addr), 3)}
+                    </span>
+                    <span>
+                      {metaMaskAddress.metaMaskAddress == null ||
+                      item.addr == ""
+                        ? item.td_6
+                        : totalReturned(
+                            metaMaskAddress.metaMaskAddress.toString(),
+                            item.addr
+                          )}
+                    </span>
                     <img src={item.icon_2} alt="" />
                   </div>
                 </div>

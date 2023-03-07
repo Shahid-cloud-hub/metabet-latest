@@ -36,6 +36,7 @@ export const FeaturedBannersContainer = styled("div")`
 
     .politics-btn {
       width: 100%;
+      cursor: pointer;
 
       a {
         width: 100%;
@@ -126,6 +127,26 @@ export const FeaturedBannersContainer = styled("div")`
       .button-17 {
         position: absolute;
         right: -130px;
+        top: 60px;
+      }
+      .button-18 {
+        position: absolute;
+        right: -137px;
+        top: 70px;
+      }
+      .button-19 {
+        position: absolute;
+        right: -140px;
+        top: 60px;
+      }
+      .button-20 {
+        position: absolute;
+        right: -140px;
+        top: 60px;
+      }
+      .button-21 {
+        position: absolute;
+        right: -140px;
         top: 60px;
       }
     }
@@ -371,6 +392,22 @@ export const FeaturedBannersContainer = styled("div")`
           right: -159px;
           top: 86px;
         }
+        .button-18 {
+          right: -159px;
+          top: 86px;
+        }
+        .button-19 {
+          right: -159px;
+          top: 86px;
+        }
+        .button-20 {
+          right: -159px;
+          top: 86px;
+        }
+        .button-21 {
+          right: -159px;
+          top: 86px;
+        }
       }
       .country_wrapper {
         img {
@@ -457,6 +494,93 @@ export const FeaturedBannersContainer = styled("div")`
       padding: 10px;
       gap: 10px;
 
+      .politics-btn {
+        .button-1 {
+          right: -174px;
+          top: 107px;
+        }
+        .button-2 {
+          right: -185px;
+          top: 100px;
+        }
+        .button-3 {
+          right: -180px;
+          top: 95px;
+        }
+        .button-4 {
+          right: -185px;
+          top: 95px;
+        }
+        .button-5 {
+          right: -185px;
+          top: 108px;
+        }
+        .button-6 {
+          position: absolute;
+          right: -185px;
+          top: 95px;
+        }
+        .button-7 {
+          right: -178px;
+          top: 95px;
+        }
+        .button-8 {
+          right: -180px;
+          top: 95px;
+        }
+        .button-9 {
+          right: -185px;
+          top: 100px;
+        }
+        .button-10 {
+          right: -215px;
+          top: 79px;
+        }
+        .button-11 {
+          right: -171px;
+          top: 95px;
+        }
+        .button-12 {
+          right: -185px;
+          top: 98px;
+        }
+        .button-13 {
+          right: -185px;
+          top: 95px;
+        }
+        .button-14 {
+          right: -175px;
+          top: 90px;
+        }
+        .button-15 {
+          right: -218px;
+          top: 60px;
+        }
+        .button-16 {
+          right: -170px;
+          top: 95px;
+        }
+        .button-17 {
+          right: -159px;
+          top: 100px;
+        }
+        .button-18 {
+          right: -175px;
+          top: 108px;
+        }
+        .button-19 {
+          right: -177px;
+          top: 95px;
+        }
+        .button-20 {
+          right: -163px;
+          top: 100px;
+        }
+        .button-21 {
+          right: -163px;
+          top: 100px;
+        }
+      }
       .country_wrapper {
         img {
           max-width: 45px;

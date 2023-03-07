@@ -4,7 +4,30 @@ export const RegularFootBallContainer = styled("div")`
   background-image: url(${(props) => props.background});
   background-repeat: no-repeat;
   background-size: contain;
-  height: 39vh;
+  height: 40vh;
+  @media screen and (max-width: 1280px) {
+    height: 30vh;
+  }
+  @media screen and (max-width: 912px) {
+    height: 11vh;
+  }
+  @media screen and (max-width: 820px) {
+    height: 11vh;
+  }
+  @media screen and (max-width: 768px) {
+    height: 20vh;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 19vh;
+  }
+  @media screen and (max-width: 414px) {
+    height: 12vh;
+  }
+
+  @media screen and (max-width: 375px) {
+    height: 14vh;
+  }
 `;
 
 export const SingleFootBallBannerContainer = styled("div")`
@@ -167,7 +190,7 @@ export const SingleFootBallBannerContainer = styled("div")`
 
       .country_wrapper {
         img {
-          max-width: 45px;
+          max-width: 20px;
         }
 
         span {

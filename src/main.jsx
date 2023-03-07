@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
@@ -12,22 +12,18 @@ import { RouterProvider } from "react-router";
 // Routes //
 import Dashboard from "./routes/Dashboard";
 
-// Components //
-import WORLDCUPLANDINGPAGE from "./components/WorldcupLandingPage/WorldcupLandingPage";
-// import DXY from "./components/DXY/DXY";
-import BITCOIN from "./components/BitcoinPrice/Bitcoin";
-import ETHEREUM from "./components/Ethereum/Ethereum";
-
-import FOOTBALL from "./components/LandingPage/landingPage";
-
-import CIRCKET from "./components/CricketBanners/CricketLandingPage";
+// Pages //
 import UFC from "./pages/UFC";
 import POLITICS from "./pages/Polities";
-import PoliticsDetails from "./components/Politics/PoliticsDetails";
+import DXYPage from "./pages/DXYPage";
 
-import FEATUREDEVENT from "./components/FeaturedBanners/FeaturedBanners";
-import EVENTINFO from "./components/FeaturedEvents/EventInfo";
-
+// Components //
+import WORLDCUPLANDINGPAGE from "./components/WorldcupLandingPage/WorldcupLandingPage";
+import BITCOIN from "./components/BitcoinPrice/Bitcoin";
+import ETHEREUM from "./components/Ethereum/Ethereum";
+import CIRCKET from "./components/CricketBanners/CricketLandingPage";
+import CRICKETEVENT from "./components/CricketBanners/CricketEvent";
+import POLITICSDETAILS from "./components/Politics/PoliticsDetails";
 import HOWITWORKS from "./components/HowItsWork/HowItWorks";
 import MYACTIVEBETS from "./components/ActiveBet/ActiveBet";
 import MYBETHISTORY from "./components/BETHistory/BETHistory";
@@ -40,20 +36,17 @@ import SPONSORSHIP from "./components/Sponsorship/Sponsorship";
 import COOKIES from "./components/Cookies/Cookies";
 import PRIVACY from "./components/Privacy/Privacy";
 import TERMS from "./components/Terms/Terms";
-import Test from "./components/UFcComponents/Test";
-import StatsComponent from "./components/Statistics/StatsComponent";
-import DXYPage from "./pages/DXYPage";
-import Truth2earn from "./components/Truth2earn/Truth2earn";
-import TRUSCToken from "./components/TRUSCToken/TRUSCToken";
+import GETEVENT from "./components/UFcComponents/GetEvent";
+import STATSCOMPONENT from "./components/Statistics/StatsComponent";
+import TRUTH2EARN from "./components/Truth2earn/Truth2earn";
+import TRUSCTOKEN from "./components/TRUSCToken/TRUSCToken";
 
+// Football Events Section //
 import REGFOOTBALL from "./pages/RegFootball";
-// Leagues //
-import CHAMPIONSLEAGUE from "./components/FootballLeagues/ChampionsLeague";
-import LIGUE1 from "./components/FootballLeagues/Ligue1";
-import LALIGA from "./components/FootballLeagues/Laliga";
-import PREMIERLEAGUE from "./components/FootballLeagues/PremierLeague";
-import SERIEA from "./components/FootballLeagues/SerieA";
-import BUNDESLIGA from "./components/FootballLeagues/Bundesliga";
+
+// Leagues Section //
+import ALLFOOTBALLEVENTS from "./components/FootballLeagues/Football";
+import GetStatistics from "./components/Statistics/GetStatistics";
 
 let persistor = persistStore(store);
 const router = createBrowserRouter([
@@ -79,11 +72,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/truth-2-earn",
-        element: <Truth2earn />,
+        element: <TRUTH2EARN />,
       },
       {
-        path: "/TRUSC-Token",
-        element: <TRUSCToken />,
+        path: "/trusc-token",
+        element: <TRUSCTOKEN />,
       },
       {
         path: "/dxy",
@@ -103,57 +96,79 @@ const router = createBrowserRouter([
         children: [
           {
             path: "champions-league",
-            element: <CHAMPIONSLEAGUE group_type="champions-league" />,
+            element: <ALLFOOTBALLEVENTS group_type="champions-league" />,
           },
           {
             path: "ligue-1",
-            element: <LIGUE1 group_type="ligue-1" />,
+            element: <ALLFOOTBALLEVENTS group_type="ligue-1" />,
           },
           {
             path: "laliga",
-            element: <LALIGA group_type="laliga" />,
+            element: <ALLFOOTBALLEVENTS group_type="laliga" />,
           },
           {
             path: "premier-league",
-            element: <PREMIERLEAGUE group_type="premier-league" />,
+            element: <ALLFOOTBALLEVENTS group_type="premier-league" />,
           },
           {
             path: "serie-a",
-            element: <SERIEA group_type="serie-a" />,
+            element: <ALLFOOTBALLEVENTS group_type="serie-a" />,
           },
           {
             path: "bundesliga",
-            element: <BUNDESLIGA group_type="bundesliga" />,
+            element: <ALLFOOTBALLEVENTS group_type="bundesliga" />,
           },
         ],
       },
       {
         path: ":group/:title/stats/:id",
-        element: <StatsComponent />,
+        element: <STATSCOMPONENT />,
       },
       {
         path: "/cricket",
         element: <CIRCKET />,
       },
       {
+        path: "/cricket-event",
+        element: <CRICKETEVENT />,
+      },
+      {
         path: "/ufc",
         element: <UFC />,
+        children: [
+          {
+            path: "ufc-fight-night",
+            element: <ALLFOOTBALLEVENTS group_type="ufc-fight-night" />,
+          },
+          {
+            path: "ufc-285",
+            element: <ALLFOOTBALLEVENTS group_type="ufc-285" />,
+          },
+          {
+            path: "ufc-286",
+            element: <ALLFOOTBALLEVENTS group_type="ufc-286" />,
+          },
+        ],
       },
       {
         path: "/event/:group/:title",
-        element: <Test />,
+        element: <GETEVENT />,
       },
       {
         path: "/stats/:group/:title/:id",
-        element: <StatsComponent />,
+        element: <STATSCOMPONENT />,
+      },
+      {
+        path: ":group/:title/statistics/:id",
+        element: <GetStatistics />,
       },
       {
         path: "/politics",
         element: <POLITICS />,
       },
       {
-        path: "/PoliticsDetails",
-        element: <PoliticsDetails />,
+        path: "/politics-details",
+        element: <POLITICSDETAILS />,
       },
       {
         path: "/whitepaper",

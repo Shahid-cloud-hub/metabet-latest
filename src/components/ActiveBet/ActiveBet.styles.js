@@ -21,6 +21,10 @@ export const Container = styled.div`
       border-radius: 8px;
       border: none;
       gap: 4px;
+      color: #577184;
+    }
+    .active {
+      color: #ffffff;
     }
   }
   .history_span {

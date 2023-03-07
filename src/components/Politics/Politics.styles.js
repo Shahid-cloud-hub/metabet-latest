@@ -206,6 +206,7 @@ export const StatContainer = styled.div`
   padding: 10px 0px;
   background-repeat: no-repeat;
   background-size: contain;
+  gap: 15px;
 
   .portfolio {
     display: flex;
@@ -323,7 +324,7 @@ export const StatContainer = styled.div`
     border-radius: 12px;
     padding: 10px;
     min-height: 230px;
-    max-width: 163px;
+    max-width: 285px;
     gap: 10px;
 
     p {
@@ -793,6 +794,46 @@ export const Info = styled.div`
   @media screen and (max-width: 375px) {
     padding: 10px;
   }
+  .win_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .betStat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #0a1a25;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 135px;
+    width: 100%;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    span {
+      font-family: "Inter";
+      font-size: 10px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    #clr {
+      color: #fc4c1e;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      border: none;
+      background: none;
+      text-align: end;
+    }
+  }
 
   .WIN {
     display: flex;
@@ -801,9 +842,10 @@ export const Info = styled.div`
     background: #0a1a25;
     border-radius: 10px;
     padding: 10px;
-    max-width: 205px;
+    max-width: 150px;
     width: 100%;
     gap: 10px;
+
     .title {
       display: flex;
       gap: 2px;
@@ -828,7 +870,7 @@ export const Info = styled.div`
       border: none;
       font-size: 14px;
       cursor: pointer;
-      padding: 10px 65px;
+      padding: 7px 45px;
     }
     span {
       font-weight: 500;
@@ -875,7 +917,6 @@ export const Info = styled.div`
     .WIN {
       padding: 10px;
       max-width: 150px;
-
       p {
         font-size: 12px;
       }

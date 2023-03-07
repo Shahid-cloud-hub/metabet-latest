@@ -15,7 +15,7 @@ const Polities = () => {
         gridTemplateColum="1fr 1fr 1fr"
         className="grid-pad"
       >
-        {Politics_banner_data.map((item, index) => {
+        {Politics_banner_data?.map((item, index) => {
           return (
             <FeaturedBanners
               id={item.id}

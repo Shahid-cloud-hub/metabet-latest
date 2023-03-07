@@ -31,9 +31,9 @@ const FeaturedBanners = (props) => {
             <div className="featured-banner-wrapper">
               <div
                 className={`${
-                  pathname === "/Truth-2-earn"
+                  pathname === "/truth-2-earn"
                     ? "politics-btn-hide"
-                    : "politics-btn "
+                    : "politics-btn"
                 }`}
               >
                 <a

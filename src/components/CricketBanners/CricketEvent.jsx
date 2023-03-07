@@ -12,14 +12,14 @@ const CricketEvent = () => {
   }, []);
   const { state } = useLocation();
   const [date] = useState(state[0].date);
-  console.log(date);
+  console.log("cricket event", state);
 
   const [addStyle, setAddStyle] = useState("");
-  const [getId] = useState(state[0].id);
-  const [getName] = useState(state[0].country_name_1);
-  const [getReview] = useState(state[0].review_video);
-  const [getPrediction] = useState(state[0].prediction_video);
-  const [eventStatus] = useState(state[0].event_ended);
+  const [getId] = useState(state[0]?.id);
+  const [getName] = useState(state[0]?.country_name_1);
+  const [getReview] = useState(state[0]?.review_video);
+  const [getPrediction] = useState(state[0]?.prediction_video);
+  const [eventStatus] = useState(state[0]?.event_ended);
   console.log(eventStatus);
 
   const str = "2023-01-29";
@@ -28,12 +28,12 @@ const CricketEvent = () => {
 
   // ✅ Get timestamp in Milliseconds
   const timestamp = testDate.getTime();
-  console.log("test", timestamp); //
+  console.log("test", timestamp);
 
   return (
     <>
       <BetContainer text="20px" textGap="12px" statsGap="40px">
-        {state.map((item, index) => {
+        {state?.map((item, index) => {
           console.log(item.date >= 19);
           return (
             <div className="featured-banner-wrapper">
@@ -95,7 +95,7 @@ const CricketEvent = () => {
         eventDate={date}
         getId={getId}
         winId={addStyle}
-        date={state[0].date}
+        date={state[0]?.date}
         getName={getName}
         getPrediction={getPrediction}
         getReview={getReview}

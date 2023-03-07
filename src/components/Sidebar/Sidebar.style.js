@@ -7,10 +7,14 @@ export const Container = styled.div`
   width: 340px;
   font-family: "CabinetGroteskBold";
 
+  /* img {
+    background-color: #0f212e;
+  } */
+
   .wrapper-link {
     display: flex;
     gap: 30px;
-    padding: 20px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     flex-direction: column;
   }
 

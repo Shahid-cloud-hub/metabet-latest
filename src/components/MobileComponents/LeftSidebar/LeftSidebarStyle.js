@@ -414,7 +414,7 @@ export const ContainerSidebar = styled("div")`
       font-size: 14px;
     }
     .sidenav {
-      top: 80px;
+      top: 100px;
       .closebtn {
         img {
           width: 40px;

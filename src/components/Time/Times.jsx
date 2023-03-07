@@ -70,19 +70,19 @@ function Times({ date }) {
     return () => {
       clearInterval(x);
     };
-  }, []);
+  }, [date]);
   return (
     <>
-      <span style={{ fontSize: "14px" }}>{`${newVal}`}</span>
-      <span style={{ fontSize: "14px" }}>00:00 GMT</span>
+      <span id="val">{`${newVal}`}</span>
+      {/* <span style={{ fontSize: "14px" }}>00:00 GMT</span> */}
       <div
         id="demo_1"
         style={{
-          fontSize: "13px",
           textAlign: "center",
           color: "yellow",
         }}
       ></div>
+      <span>{deadline.toLocaleTimeString()}</span>
     </>
   );
 }

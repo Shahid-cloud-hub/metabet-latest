@@ -155,6 +155,32 @@ export const FootballLeaguesContainer = styled("div")`
   .user__info > small {
     color: #fff;
   }
+
+  @media screen and (max-width: 375px) {
+    .card_item {
+      .img_item {
+        img {
+          width: 20px;
+        }
+      }
+      span {
+        font-size: 5px;
+      }
+    }
+    .bet-btn-wrapper {
+      span {
+        font-size: 5px;
+      }
+      img {
+        width: 20px;
+      }
+    }
+    .card__body {
+      transform: translate(73%, 66%);
+      padding: 0px;
+      gap: 3px;
+    }
+  }
 `;
 
 export const BackgrounImg = styled("img")`

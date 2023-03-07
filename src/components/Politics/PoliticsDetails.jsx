@@ -4,7 +4,6 @@ import Tabs from "../TabFifa/Tab";
 import useBreakpoint from "../../hooks/useBreakpoints";
 import clock1 from "../../assets/images/BitcoinPrice/clock1.png";
 import clock2 from "../../assets/images/BitcoinPrice/clock2.png";
-import AirdropFooterBanner from "../FooterBanners/AirdropFooterBanner";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Carousel from "./Carousel/Carousel";
@@ -15,8 +14,8 @@ const PoliticsDetails = () => {
   }, []);
 
   const { state } = useLocation();
-  const [preview] = useState(state[0].review_video);
-  const [prediction] = useState(state[0].prediction_video);
+  // const [preview] = useState(state[0]?.review_video);
+  // const [prediction] = useState(state[0]?.prediction_video);
   const { isDesktop } = useBreakpoint();
 
   console.log("first", state);
@@ -24,32 +23,6 @@ const PoliticsDetails = () => {
   const id =
     "0x294220fa75e41651782e351551183231fff9deba6bd76820bd93d92f9382481a";
 
-  const bData = [
-    {
-      id: 1,
-      name: "Stays in Bahamas 🏝️ Prison",
-      btn: "Bet",
-      info: "Short information",
-    },
-    {
-      id: 2,
-      name: "Prison 🇺🇸 ⛓️ ",
-      btn: "Bet",
-      info: "Short information",
-    },
-    {
-      id: 3,
-      name: "Suicide 👻 ",
-      btn: "Bet",
-      info: "Short information",
-    },
-    {
-      id: 4,
-      name: "Freedom 😂",
-      btn: "Bet",
-      info: "Short information",
-    },
-  ];
   const [addStyle, setAddStyle] = useState();
 
   return (
@@ -60,10 +33,10 @@ const PoliticsDetails = () => {
             <span>Statistic:</span>
             {state?.map((item) => (
               <>
-                <span>{item.stats_title1}</span>
-                <span>{item.stats_title2}</span>
-                <span>{item.stats_title3}</span>
-                <span>{item.stats_title4}</span>
+                <span>{item?.stats_title1}</span>
+                <span>{item?.stats_title2}</span>
+                <span>{item?.stats_title3}</span>
+                <span>{item?.stats_title4}</span>
               </>
             ))}
           </div>
@@ -71,7 +44,7 @@ const PoliticsDetails = () => {
             <div id="live">
               <span>POOL LIVE</span>
             </div>
-            {state[0]?.title && <span>{state[0]?.title}</span>}
+            {/* {state[0]?.title && <span>{state[0]?.title}</span>} */}
             <div className="close">
               <div className="outcome">
                 <div className="clock">
@@ -91,54 +64,70 @@ const PoliticsDetails = () => {
                   </div>
                 </div>
                 <span>
-                  {state[0]?.Date}
+                  {/* {state[0]?.Date} */}
                   <br />
                   00:00 GMT
                 </span>
               </div>
             </div>
           </div>
-          {state?.map((item) => {
+          {/* {state[0]?.map((item) => {
             return (
               <div className="portfolio">
                 <img
-                  src={item.background_img}
+                  src={item?.background_img}
                   width={450}
                   alt="Politics_member"
                 />
               </div>
             );
-          })}
+          })} */}
         </StatContainer>
-        <Info>
+        {/* <Info>
           {state[0]?.bet.map((item) => (
-            <>
-              {console.log(item.id)}
-              <div className="WIN" key={item.id}>
+            <div className="win_wrapper">
+              {console.log(item?.id)}
+              <div className="WIN" key={item?.id}>
                 <div className="title">
-                  <img src={item.icon} />
-                  <p> {item.name}</p>
+                  <img src={item?.icon} />
+                  <p> {item?.name}</p>
                 </div>
                 <button
                   onClick={() => setAddStyle(item.id)}
                   style={
-                    item.id === addStyle
+                    item?.id === addStyle
                       ? { background: "#fc4c1e" }
                       : { background: "#7b7b7b" }
                   }
                 >
-                  {item.btn}
+                  {item?.btn}
                 </button>
               </div>
-            </>
+              {state[0]?.id === 10 && (
+                <div className="betStat">
+                  <div>
+                    <span>{item?.Pool_size}</span>
+                    <span id="clr">$873782</span>
+                  </div>{" "}
+                  <div>
+                    <span>{item?.bet_number}</span>
+                    <span id="clr">36262</span>
+                  </div>{" "}
+                  <div>
+                    <span>{item?.odds}</span>
+                    <span id="clr">1.2</span>
+                  </div>{" "}
+                </div>
+              )}
+            </div>
           ))}
-        </Info>
-        <Tabs
+        </Info> */}
+        {/* <Tabs
           getId={id}
           winId={addStyle}
           getReview={preview}
           getPrediction={prediction}
-        />
+        /> */}
       </PoliticsContainer>
       <Carousel />
     </>
