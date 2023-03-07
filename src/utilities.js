@@ -118,6 +118,11 @@ const AllUserBets = async (user) => {
   return Txn;
 };
 
+const AllUserBets_id = async (user, ids) => {
+  const Txn = await connectedContract.getAllUserBets(user, ids);
+  return Txn;
+};
+
 const getTotalReturned = async (user, token) => {
   const Txn = await connectedContract.getTotalReturned(user, token);
   return Txn;
@@ -138,6 +143,7 @@ const Utils = {
   MetabetBalance,
   getTotalReturned,
   userStatus,
+  AllUserBets_id
 };
 
 export default Utils;
