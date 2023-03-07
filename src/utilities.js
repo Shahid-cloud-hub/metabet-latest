@@ -9,7 +9,6 @@ import {
 } from "./constants";
 import MetabetMask from "./abis/MetabetMask.json";
 import BEP20 from "./abis/ERC20.json";
-import { useState } from "react";
 
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
 const provider2 = new ethers.providers.JsonRpcProvider(PROVIDER2);
@@ -30,6 +29,15 @@ const EventOdd = async (id, win, token) => {
     return Number(Txn.toString());
   }
   const Txn = await connectedContract.getPoolTotalTeam(win, token, id);
+  return Number(Txn.toString());
+};
+
+const currentOdd = async (id, win, token) => {
+  if (token === "") {
+    const Txn = await connectedContract2.getOdds(win, token, id);
+    return Number(Txn.toString());
+  }
+  const Txn = await connectedContract.getOdds(win, token, id);
   return Number(Txn.toString());
 };
 
@@ -88,29 +96,9 @@ const PoolSize = async (id, token) => {
   return Number(Txn.toString());
 };
 
-export const useAxios = () => {
-  const [response, setResponse] = useState(undefined);
-  const [error, setError] = useState("");
-  const [loading, setloading] = useState(true);
-
-  const AllBets = async (id) => {
-    console.log(id, "from all bets");
-    try {
-      const Txn = await connectedContract.getBets(id);
-      setResponse(Txn);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setloading(false);
-    }
-  };
-
-  return {
-    response,
-    error,
-    loading,
-    AllBets,
-  };
+const AllBets = async (id) => {
+  const Txn = await connectedContract.getBets(id);
+  return Txn;
 };
 
 const AllUserBets = async (user) => {
@@ -132,6 +120,7 @@ const Utils = {
   EventOdd,
   PoolSize,
   PoolTotal,
+  AllBets,
   Airdrop,
   AllUserBets,
   FreeBetToken,
