@@ -6,11 +6,13 @@ import ufc from "../../assets/images/ufc.webp";
 import BUSD from "../../assets/images/BUSD.png";
 import GOAL from "../../assets/images/GOAL.png";
 import Utils from "../../utilities";
+import { result } from "lodash";
 
 const TradeAccordian = (props) => {
   const [isOpen, setOpen] = useState(false);
   const [showAccord, setShowAccord] = useState();
   const [bets, setAllBets] = useState([]);
+  const [odd, setOdd] = useState(0);
 
   console.log(props.id, "all best");
 
@@ -33,7 +35,17 @@ const TradeAccordian = (props) => {
     return s;
   }
 
+  const checkOdd = (id, result, token)=>{
+    Utils.currentOdd(id, result, token).then(function (data) {
+      setOdd(Number(data));
+    });
 
+    return odd;
+  }
+
+  //console.log(checkOdd(props.id,"0xac6d8867a466Cd5C017822aB6feE2d670090cbB3", 79000000000000))
+
+console.log(arr.map((item) => {console.log(item)}))
   const RecentTradeData = [
     {
       id: 1,
@@ -70,7 +82,8 @@ const TradeAccordian = (props) => {
                 <div className="item_2">
                   <span>{String(item.user).substring(8,-1)}</span>
                   <span>{formatDate(Number(item.timestamp))}</span>
-                  <span>{}</span>
+                  <span>{
+                    checkOdd(item.eventId, item.result, item.token).toFixed(2)}</span>
                   <div id="betAmount">
                     <span>{Number(item.amount)/1e18}</span>
                     <img src={item.icon3} alt={item.name} />

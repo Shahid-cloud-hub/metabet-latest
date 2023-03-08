@@ -49,13 +49,6 @@ const BetHistory = () => {
 
   const arrData = hightlightData == undefined ? [] : Object.values(hightlightData);
 
-  console.log(arrData)
-  if(arrData != []){
-  Utils.AllUserBets_id(
-    metaMaskAddress.metaMaskAddress.toString(), arrData).then(function (data) {
-    console.log("test", data);
-  });}
-
   if (metaMaskAddress.metaMaskAddress) {
     if (getName != "all") {
       Utils.AllUserBets_id(
@@ -81,7 +74,7 @@ const BetHistory = () => {
   //   });
   // }
 
-  console.log(bets);
+  //console.log(bets);
 
   return (
     <>
@@ -92,7 +85,7 @@ const BetHistory = () => {
         <div className="filter-btn">
           <FilterTabBtns tabItem={Filter} callback={callback} />
         </div>
-        <BetContainer bets={bets} />
+        <BetContainer data={arrData} name = {getName} />
         {/* there we have use anonymous function */}
         {/* <button id="history_btn" onClick={() => setShow((prev) => !prev)}> */}
         <button id="history_btn">
