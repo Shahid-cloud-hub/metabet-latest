@@ -10,13 +10,9 @@ import { useSelector } from "react-redux";
 import Utils from "../../utilities.js";
 
 const BetHistory = () => {
-  const [getName, setGetName] = useState(null);
+  const [getName, setGetName] = useState("all");
   const [bets, setBets] = useState([]);
   const metaMaskAddress = useSelector((state) => state.wallet);
-
-  if (getName == null) {
-    setGetName("all");
-  }
 
   const callback = (name) => {
     setGetName(name);
@@ -50,29 +46,31 @@ const BetHistory = () => {
   const arrData =
     hightlightData == undefined ? [] : Object.values(hightlightData);
 
-  if (metaMaskAddress.metaMaskAddress) {
-    if (getName != "all") {
-      Utils.AllUserBets_id(
-        metaMaskAddress.metaMaskAddress.toString(),
-        arrData
-      ).then(function (data) {
-        setBets(data);
-      });
-    } else if (
-      getName == "dxy" ||
-      getName == "ufc" ||
-      getName == "ethereum" ||
-      getName == "bitcoin" ||
-      getName == "football" ||
-      getName == "cricket"
-    ) {
-      Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
-        function (data) {
+  useEffect(() => {
+    if (metaMaskAddress.metaMaskAddress) {
+      if (getName != "all") {
+        Utils.AllUserBets_id(
+          metaMaskAddress.metaMaskAddress.toString(),
+          arrData
+        ).then(function (data) {
           setBets(data);
-        }
-      );
+        });
+      } else if (
+        getName == "dxy" ||
+        getName == "ufc" ||
+        getName == "ethereum" ||
+        getName == "bitcoin" ||
+        getName == "football" ||
+        getName == "cricket"
+      ) {
+        Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
+          function (data) {
+            setBets(data);
+          }
+        );
+      }
     }
-  }
+  }, [metaMaskAddress]);
 
   // if (metaMaskAddress.metaMaskAddress) {
   //   Utils.AllUserBets_id(
@@ -84,6 +82,8 @@ const BetHistory = () => {
   // }
 
   //console.log(bets);
+
+  console.log("====================================>");
 
   return (
     <>

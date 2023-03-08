@@ -39,13 +39,13 @@ function Dropdown() {
     Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(
       function (data) {
         data === 0 ? setBalance(null) : setBalance(data);
-        console.log(data, "test");
+        // console.log(data, "test");
       }
     );
   }
 
   useEffect(() => {
-    console.log("balance", balance);
+    // console.log("balance", balance);
   }, [balance]);
 
   useEffect(() => {
