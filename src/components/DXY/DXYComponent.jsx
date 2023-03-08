@@ -131,7 +131,6 @@ const DXYComponent = () => {
           getPrediction={prediction}
         />
       </PoliticsContainer>
-      {isDesktop && <AirdropFooterBanner />}
     </>
   );
 };

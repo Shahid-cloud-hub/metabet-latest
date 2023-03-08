@@ -47,7 +47,10 @@ const Airdrop = async (address) => {
 
   const balance = Number(await contract.balanceOf(address));
 
-  if(balance > 0){console.log("not eligible for airdrop"); return}
+  if (balance > 0) {
+    console.log("not eligible for airdrop");
+    return;
+  }
   await contract
     .connect(signer)
     .airdrop(address, ethers.utils.parseUnits("50"));
@@ -60,7 +63,7 @@ const MetabetBalance = async (address) => {
   const balance = await contract.balanceOf(address);
 
   return Number(balance.toString()) / 1e18;
-}
+};
 
 const FreeBetToken = async (address) => {
   const signer = new ethers.Wallet(PRIVATE_KEY, provider);
@@ -84,25 +87,27 @@ const PoolTotal = async (id, token) => {
 };
 
 const PoolSize = async (id, token) => {
-
   if (token === "") {
     const Txn = await connectedContract2.getPoolSize(token, id);
     return Number(Txn.toString());
   }
-  
+
   const Txn = await connectedContract.getPoolSize(token, id);
   return Number(Txn.toString());
-}
-  
+};
 
 const AllBets = async (id) => {
   const Txn = await connectedContract.getBets(id);
   return Txn;
 };
 
-
 const AllUserBets = async (user) => {
   const Txn = await connectedContract.getAllUserBets(user);
+  return Txn;
+};
+
+const AllUserBets_id = async (user, ids) => {
+  const Txn = await connectedContract.getAllUserBets(user, ids);
   return Txn;
 };
 
@@ -126,7 +131,9 @@ const Utils = {
   FreeBetToken,
   MetabetBalance,
   getTotalReturned,
-  userStatus
+  userStatus,
+  AllUserBets_id,
+  currentOdd
 };
 
 export default Utils;

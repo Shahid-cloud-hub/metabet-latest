@@ -340,7 +340,8 @@ export const Table = styled.div`
   }
 
   .Head:nth-child(1) {
-    padding: 25px 10px 15px;
+    /* padding: 25px 10px 15px; */
+    padding: 25px 10px 5px;
   }
 
   .Head:nth-child(5) {
@@ -705,26 +706,28 @@ export const Table = styled.div`
   }
 
   @media screen and (max-width: 420px) {
-    .head {
+    .item {
       span {
         font-size: 8px;
       }
-    }
-
-    .item {
-      span {
-        font-size: 12px;
-      }
       button {
-        max-width: 125px;
+        max-width: 105px;
         font-size: 12px;
         cursor: pointer;
       }
     }
+    .changeItem {
+      button {
+        width: 75px;
+        font-size: 10px;
+      }
+    }
 
     .Hwrapper {
+      gap: 10px;
+
       span {
-        font-size: 12px;
+        font-size: 8px;
         margin-top: 3px;
       }
     }
@@ -733,7 +736,7 @@ export const Table = styled.div`
       flex-direction: column;
       width: 100%;
       gap: 10px;
-      max-width: 395px;
+      max-width: 275px;
       margin: 0 auto;
     }
 
@@ -763,12 +766,97 @@ export const Table = styled.div`
       span {
         font-size: 8px;
       }
+      span:nth-child(2) {
+        transform: translate(8px, 0px);
+      }
+      span:nth-child(3) {
+        transform: translate(3px, 0px);
+      }
+      span:nth-child(5) {
+        transform: translate(0px, 0px);
+      }
     }
     .item {
       gap: 83px;
     }
   }
+
   @media screen and (max-width: 390px) {
+    .item {
+      span {
+        font-size: 8px;
+      }
+      button {
+        max-width: 105px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    }
+    .changeItem {
+      button {
+        width: 75px;
+        font-size: 10px;
+      }
+    }
+
+    .Hwrapper {
+      gap: 10px;
+
+      span {
+        font-size: 8px;
+        margin-top: 3px;
+      }
+    }
+
+    .payments-inputs-wrapper {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      max-width: 275px;
+      margin: 0 auto;
+    }
+
+    .status {
+      justify-content: flex-start;
+      gap: 10px;
+
+      div {
+        transform: none;
+        position: initial;
+        height: 20px;
+      }
+
+      span {
+        margin-top: 3px;
+      }
+    }
+
+    label {
+      max-width: 420px;
+    }
+
+    label:nth-child(3) {
+      max-width: 420px;
+    }
+    .head {
+      span {
+        font-size: 8px;
+      }
+      span:nth-child(2) {
+        transform: translate(8px, 0px);
+      }
+      span:nth-child(3) {
+        transform: translate(3px, 0px);
+      }
+      span:nth-child(5) {
+        transform: translate(0px, 0px);
+      }
+    }
+    .item {
+      gap: 83px;
+    }
+  }
+  @media screen and (max-width: 414px) {
     .item {
       span {
         font-size: 8px;

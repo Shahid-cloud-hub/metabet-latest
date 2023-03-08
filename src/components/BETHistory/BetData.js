@@ -10,7 +10,7 @@ import poland from "../../assets/images/WorldcupBanner/poland-mini.webp";
 import ChainLink from "../../assets/images/Betimg/chainlink.png";
 import senegal from "../../assets/images/WorldcupBanner/senegal-mini.webp";
 import england from "../../assets/images/WorldcupBanner/england-mini.webp";
-import {ZERO_ADDRESS, METABET_ADDRESS} from "../../constants.js";
+import { ZERO_ADDRESS, METABET_ADDRESS } from "../../constants.js";
 
 export const betData = [
   {

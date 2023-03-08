@@ -139,13 +139,13 @@ const Footer = () => {
         <div className="terms">
           <ul>
             <li>
-              <NavLink to="/Cookies">Cookies</NavLink>
+              <NavLink to="/cookies">Cookies</NavLink>
             </li>
             <li>
-              <NavLink to="/Privacy">Privacy</NavLink>
+              <NavLink to="/privacy">Privacy</NavLink>
             </li>
             <li>
-              <NavLink to="/Terms">Terms</NavLink>
+              <NavLink to="/terms">Terms</NavLink>
             </li>
           </ul>
         </div>

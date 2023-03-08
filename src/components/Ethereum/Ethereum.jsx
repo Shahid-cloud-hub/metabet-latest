@@ -73,6 +73,9 @@ function Ethereum() {
 
   const [addStyle, setAddStyle] = useState();
 
+  const id =
+    "0x1e2ff1cc577a5287228c35652f5f5fefa2baa22c499f37ccd800a3029e6c4fbf";
+
   return (
     <>
       <Container>
@@ -155,11 +158,13 @@ function Ethereum() {
           ))}
         </Info>
         <Tabs
+          getId={id}
+          winId={addStyle}
           predictionVideo="https://www.youtube.com/watch?v=fCgHXKyk850"
           bitAndEthBet={false}
         />
       </Container>
-      {isDesktop && <AirdropFooterBanner />}
+      {/* {isDesktop && <AirdropFooterBanner />} */}
     </>
   );
 }

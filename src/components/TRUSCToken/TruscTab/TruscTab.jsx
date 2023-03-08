@@ -118,7 +118,7 @@ class Tabs extends Component {
                 <div className="truai">
                   <label>
                     To: <img src={usdc} />
-                    <input placeholder="TRUSC" />
+                    <input placeholder="USDC" />
                   </label>{" "}
                   <span>00.00</span>
                   <div className="text">
@@ -206,7 +206,7 @@ class Tabs extends Component {
                 <div className="truai">
                   <label>
                     To: <img src={usdc} />
-                    <input placeholder="TRUSC" />
+                    <input placeholder="USDC" />
                   </label>{" "}
                   <span>00.00</span>
                   <div className="text">

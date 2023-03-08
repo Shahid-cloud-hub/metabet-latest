@@ -118,7 +118,7 @@ export const Filter = [
   },
   {
     id: 8,
-    name: "Trending Events",
+    name: "Trending-Event",
     img: trending,
   },
 ];

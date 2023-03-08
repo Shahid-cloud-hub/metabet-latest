@@ -24,7 +24,7 @@ const walletConnect = async (accountFromExt) => {
 
         console.log(getAddress, "getAddress dropdown");
         await Utils.Airdrop(account);
-        console.log("airdropped")
+        console.log("airdropped");
 
         return getAddress;
       }

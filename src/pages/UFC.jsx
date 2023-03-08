@@ -1,50 +1,41 @@
-import React, { useEffect } from "react";
-import Loading from "../components/Loading/Loading";
-import UFCBanners from "../Components/UFcComponents/UFCBanners";
-import { useAxios } from "../hooks/useAxios";
-import { UFCFeaturedBanners } from "../JasonData/FeaturedBannerData";
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import RegularFootBallBanners from "../Components/RegularFootBall/RegularFootBallBanners";
+import { UFCMainBanners } from "../JasonData/UFC";
 
 const UFC = () => {
-  const { fetchData, response, loading } = useAxios();
+  const location = useLocation();
+  const { pathname } = location;
 
-  const getBanners = async () => {
-    await fetchData({
-      method: "GET",
-      url: "http://localhost:5002/getGroup/group/UFC",
-    });
-  };
-
-  useEffect(() => {
-    getBanners();
-    window.scrollTo(0, 0);
-    // console.log("UFC", response);
-  }, []);
+  const p_1 = "/ufc/ufc-fight-night";
+  const p_2 = "/ufc/ufc-285";
+  const p_3 = "/ufc/ufc-286";
   return (
     <>
-      {loading ? (
-        <div className="loading">
-          <Loading />
-        </div>
-      ) : response?.length > 0 ? (
-        <div className="blogs-conainer">
-          {loading ? (
-            <div className="loading">
-              <Loading />
-            </div>
-          ) : (
-            response?.map((item, index) => (
-              <UFCBanners
-                key={index}
-                background_img={item?.event.banner}
-                data={item}
-              />
-            ))
-          )}
-        </div>
+      {location.pathname === !pathname ? (
+        UFCMainBanners?.map((item, index) => {
+          return (
+            <RegularFootBallBanners
+              key={index}
+              background_img={item?.backgroundImg}
+              route_path={item.route_path}
+            />
+          );
+        })
+      ) : location.pathname === p_1 ||
+        location.pathname === p_2 ||
+        location.pathname === p_3 ? (
+        <Outlet />
       ) : (
-        <div className="no-blog-founded">
-          <h2>No Blog Founded</h2>
-        </div>
+        UFCMainBanners?.map((item, index) => {
+          return (
+            <RegularFootBallBanners
+              key={index}
+              background_img={item?.backgroundImg}
+              route_path={item.route_path}
+            />
+          );
+        })
       )}
     </>
   );

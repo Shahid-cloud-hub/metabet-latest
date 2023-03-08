@@ -55,7 +55,6 @@ const Truth2earn = (props) => {
               <div className="vote">
                 {item.event_status === false ? (
                   <>
-                    {" "}
                     <img
                       src={item.id === showAccord ? VoteBtnUp : VoteBtnDown}
                       onClick={() => {

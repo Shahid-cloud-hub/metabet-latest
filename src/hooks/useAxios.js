@@ -6,6 +6,7 @@ export const useAxios = () => {
   const [response, setResponse] = useState(undefined);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
+
   const fetchData = async (params) => {
     try {
       const result = await axios.request(params);

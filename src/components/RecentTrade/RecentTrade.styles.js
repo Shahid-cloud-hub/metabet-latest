@@ -343,4 +343,190 @@ export const TradeTable = styled.div`
       }
     }
   }
+  @media screen and (max-width: 520px) {
+    max-width: 395px;
+    .th-Head {
+      padding: 15px;
+      max-width: 340px;
+
+      span {
+        font-weight: 500;
+        font-size: 10px;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 632px;
+      }
+    }
+
+    .td-Head {
+      width: 100%;
+      max-width: 375px;
+      .td-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+
+        span {
+          font-weight: 500;
+          font-size: 10px;
+        }
+
+        .td-wrapper {
+          .item_1 {
+            display: flex;
+            gap: 10px;
+            padding-left: 10px;
+          }
+          #scan-icon {
+            transform: translateX(2px);
+          }
+          .item_2 {
+            align-self: none;
+            align-items: flex-start;
+            max-width: 300px;
+
+            img {
+              width: 15px;
+            }
+          }
+        }
+      }
+    }
+    .Head {
+      background: #0a1a25;
+      border-radius: 10px;
+      height: 51px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 20px;
+      gap: 22px;
+
+      p {
+        font-size: 12px;
+      }
+
+      .item {
+        gap: 58px;
+      }
+    }
+    .Content {
+      gap: 107px;
+
+      .Name {
+        width: initial;
+        gap: 0px;
+      }
+
+      .Item {
+        gap: 47px;
+        .right-Item {
+          gap: 0;
+
+          .Hwrapper {
+            width: initial;
+            gap: 0;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    max-width: 360px;
+    .th-Head {
+      padding: 15px;
+      max-width: 340px;
+
+      span {
+        font-weight: 500;
+        font-size: 10px;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 632px;
+      }
+    }
+
+    .td-Head {
+      width: 100%;
+      max-width: 340px;
+      .td-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+
+        span {
+          font-weight: 500;
+          font-size: 10px;
+        }
+
+        .td-wrapper {
+          .item_1 {
+            display: flex;
+            gap: 10px;
+            padding-left: 10px;
+          }
+          #scan-icon {
+            transform: translateX(2px);
+          }
+          .item_2 {
+            align-self: none;
+            align-items: flex-start;
+            max-width: 300px;
+
+            img {
+              width: 15px;
+            }
+          }
+        }
+      }
+    }
+    .Head {
+      background: #0a1a25;
+      border-radius: 10px;
+      height: 51px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 20px;
+      gap: 22px;
+
+      p {
+        font-size: 12px;
+      }
+
+      .item {
+        gap: 58px;
+      }
+    }
+    .Content {
+      gap: 107px;
+
+      .Name {
+        width: initial;
+        gap: 0px;
+      }
+
+      .Item {
+        gap: 47px;
+        .right-Item {
+          gap: 0;
+
+          .Hwrapper {
+            width: initial;
+            gap: 0;
+          }
+        }
+      }
+    }
+  }
 `;

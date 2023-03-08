@@ -60,6 +60,9 @@ function BitcoinPrice() {
   ];
   const [addStyle, setAddStyle] = useState();
 
+  const id =
+    "0xa2b4f04e6c0c8d6d95ecf02597de2bec7c1447109dc27d754e405c07cfa64978";
+
   return (
     <>
       <Container>
@@ -146,11 +149,12 @@ function BitcoinPrice() {
           ))}
         </Info>
         <Tabs
+          getId={id}
+          winId={addStyle}
           predictionVideo="https://www.youtube.com/watch?v=cnK0BiVEb70"
           bitAndEthBet={false}
         />
       </Container>
-      {isDesktop && <AirdropFooterBanner />}
     </>
   );
 }

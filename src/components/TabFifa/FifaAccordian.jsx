@@ -26,7 +26,6 @@ const Accordian = (props) => {
   const [addStyle, setAddStyle] = useState();
   const [valData, setValData] = useState();
 
-
   let FifaTableData = [
     {
       id: 1,
@@ -92,17 +91,17 @@ const Accordian = (props) => {
       win: "Possible WIN",
       token: BUSD_ADDRESS,
     },
+    // {
+    //   id: 8,
+    //   name: "TRUEAI",
+    //   poolCricket: "0.0000",
+    //   img: TRUEAI_Icon,
+    //   amount: "Enter Amount",
+    //   win: "Possible WIN",
+    //   token: BUSD_ADDRESS,
+    // },
     {
       id: 8,
-      name: "TRUEAI",
-      poolCricket: "0.0000",
-      img: TRUEAI_Icon,
-      amount: "Enter Amount",
-      win: "Possible WIN",
-      token: BUSD_ADDRESS,
-    },
-    {
-      id: 9,
       name: "METABET",
       poolCricket: "0.0000",
       img: METABET_Icon,
@@ -121,13 +120,17 @@ const Accordian = (props) => {
           <>
             <div
               className={
-                item.id === 1 &&
-                (pathname === "/Ethereum" ||
-                  pathname === "/Bitcoin" ||
-                  pathname === "/PoliticsDetails" ||
-                  pathname === "/UFC-Events" ||
-                  pathname === "/Cricket-Event" ||
-                  pathname === "/dxy")
+                item.id === 1 ||
+                item.id === 3 ||
+                item.id === 4 ||
+                item.id === 5 ||
+                (item.id === 7 &&
+                  (pathname === "/Ethereum" ||
+                    pathname === "/Bitcoin" ||
+                    pathname === "/politics-details" ||
+                    pathname === "/UFC-Events" ||
+                    pathname === "/Cricket-Event" ||
+                    pathname === "/dxy"))
                   ? "hide"
                   : `Head Head-${item.id}` && pathname === "/football-stats"
                   ? "Head"

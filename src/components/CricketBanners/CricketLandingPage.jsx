@@ -7,9 +7,11 @@ import useBreakpoint from "../../hooks/useBreakpoints";
 import CricketBanners from "./CricketBanners";
 import { CricketFeaturedBanners } from "../../JasonData/FeaturedBannerData";
 import AirdropFooterBanner from "../FooterBanners/AirdropFooterBanner";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Football = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -18,7 +20,7 @@ const Football = () => {
     <>
       <Container>
         {CricketFeaturedBanners.map((item) => {
-          console.log("circket", item.flag_Img_2);
+          console.log("circket", item?.innerData_1);
           return (
             <CricketFeaturedBannersContainer background={item.background_img}>
               {item.flag_Img_1 && (
@@ -32,14 +34,15 @@ const Football = () => {
                     <span>{item.vs}</span>
                     <div>
                       {item.inner_route_path && (
-                        <NavLink
-                          to={{
-                            pathname: item.inner_route_path,
-                            state: item.innerData_1,
-                          }}
+                        <a
+                          onClick={() =>
+                            navigate(item?.inner_route_path, {
+                              state: item?.innerData_1,
+                            })
+                          }
                         >
                           <button>{item.btn_name}</button>
-                        </NavLink>
+                        </a>
                       )}
                     </div>
                   </div>

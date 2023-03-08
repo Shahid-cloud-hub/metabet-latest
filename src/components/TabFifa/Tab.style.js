@@ -120,7 +120,50 @@ export const TabContainer = styled("div")`
     color: #fff;
   }
 
+  @media screen and (max-width: 1080px) {
+    max-width: 720px;
+    margin: 0 10px;
+
+    .tab {
+      max-width: 190px;
+    }
+    .head span:nth-child(2) {
+      transform: translate(15px, 0px);
+    }
+    .tableHead span {
+      font-size: 10px;
+    }
+    .video-container-separeted {
+      div:nth-child(1) {
+        width: 290px !important;
+        height: 200px !important;
+      }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    max-width: 645px;
+    margin: 0 10px;
+
+    .tab {
+      max-width: 190px;
+    }
+    .head span:nth-child(2) {
+      transform: translate(15px, 0px);
+    }
+    .tableHead span {
+      font-size: 10px;
+    }
+    .video-container-separeted {
+      div:nth-child(1) {
+        width: 250px !important;
+        height: 200px !important;
+      }
+    }
+  }
+
   @media screen and (max-width: 820px) {
+    margin: 0 10px;
+
     .tab {
       max-width: 190px;
     }
@@ -129,8 +172,8 @@ export const TabContainer = styled("div")`
     }
     .video-container-separeted {
       div:nth-child(1) {
-        width: 265px !important;
-        height: 168px !important;
+        width: 120px !important;
+        height: 100px !important;
       }
     }
   }
@@ -237,7 +280,9 @@ export const TabContainer = styled("div")`
       }
     }
   }
+
   @media screen and (max-width: 420px) {
+    max-width: 400px;
     .video {
       gap: 40px;
       margin: 10px 0px;
@@ -255,8 +300,32 @@ export const TabContainer = styled("div")`
     }
     .video-container-separeted {
       div:nth-child(1) {
-        width: 150px !important;
-        height: 100px !important;
+        width: 100px !important;
+        height: 80px !important;
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    max-width: 365px;
+    .video {
+      gap: 40px;
+      margin: 10px 0px;
+    }
+
+    .prediction {
+      max-width: 150px;
+      span {
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
+    .video-container {
+      border-radius: 4px;
+    }
+    .video-container-separeted {
+      div:nth-child(1) {
+        width: 100px !important;
+        height: 80px !important;
       }
     }
   }

@@ -29,23 +29,23 @@ import Icon_6 from "../assets/images/sidebar-social-icons/social_1.webp";
 export const first_array = [
   {
     display_name: "How it works?",
-    route: "/How-it-works",
+    route: "/how-it-works",
   },
   {
     display_name: "My Active Bet's",
-    route: "/My-Active-Bets",
+    route: "/my-active-bets",
   },
   {
     display_name: "My Bet History",
-    route: "/My-Bet-History",
+    route: "/my-bet-history",
   },
   {
     display_name: "Truth 2 earn",
-    route: "/Truth-2-earn",
+    route: "/truth-2-earn",
   },
   {
     display_name: "TRUSC Token",
-    route: "/TRUSC-Token",
+    route: "/trusc-token",
   },
 ];
 export const sec_array = [
@@ -57,13 +57,13 @@ export const sec_array = [
   },
   {
     display_name: "Bitcoin Price Bets",
-    route: "/Bitcoin",
+    route: "/bitcoin",
     icon: Bitcoin,
     white: BitcoinW,
   },
   {
     display_name: "Ethereum Price Bets",
-    route: "/Ethereum",
+    route: "/ethereum",
     icon: Ethere,
     white: EthereW,
   },
@@ -75,20 +75,20 @@ export const sec_array = [
   },
   {
     display_name: "Cricket",
-    route: "/Cricket",
+    route: "/cricket",
     icon: Cricket,
     white: CricketW,
   },
 
   {
     display_name: "UFC",
-    route: "/UFC",
+    route: "/ufc",
     icon: Boxing,
     white: BoxingW,
   },
   {
     display_name: "Trending Events",
-    route: "/Politics",
+    route: "/politics",
     icon: Politics,
     white: PoliticsW,
   },
@@ -119,16 +119,16 @@ export const third_array = [
 
 export const fourth_array = [
   {
-    display_name: "Cookies",
-    route: "/Cookies",
+    display_name: "cookies",
+    route: "/cookies",
   },
   {
-    display_name: "Privacy",
-    route: "/Privacy",
+    display_name: "privacy",
+    route: "/privacy",
   },
   {
-    display_name: "Terms",
-    route: "/Terms",
+    display_name: "terms",
+    route: "/terms",
   },
 ];
 

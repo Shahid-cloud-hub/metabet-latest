@@ -36,7 +36,7 @@ export const Container = styled.div`
   }
   .dropdown-ai {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
   }
