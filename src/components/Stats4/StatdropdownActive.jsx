@@ -2,7 +2,7 @@ import "../RecentTrade/TradedropdownActive";
 import { ethers } from "ethers";
 import { useDispatch, useSelector } from "react-redux";
 import { metaMaskConnection } from "../../redux/walletConnect/walletConnectSlice";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import MetabetMask from "../../abis/MetabetMask.json";
 import BEP20 from "../../abis/ERC20.json";
 import {
@@ -12,6 +12,8 @@ import {
   BET_ADDRESS2,
 } from "../../constants";
 import Utils from "../../utilities";
+import PopUpModel from "../PopUpModel/PopUpModel";
+import { Context } from "../../Context";
 
 function Dropdown({ id, token, img, amount, name, win, betWinId }) {
   const metaMaskAddress = useSelector((state) => state.wallet);
@@ -22,10 +24,13 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
   const [Data_size, setDataSize] = useState(null);
   const [Data_total, setDataTotal] = useState(null);
   const [load_win, setLoad_Win] = useState(false);
+  const { setItems } = useContext(Context);
 
-  console.log("Window load", load_win, enterAmount);
+  // console.log("Window load", load_win, enterAmount);
+  console.log("dropdown", betWinId);
 
-  // console.log("Bet Amount", betWinId);
+  // console.log("Selected Bet Amount", betWinId);
+
   const total = Number(enterAmount) + Number(Data_total);
 
   if (betWinId !== "") {
@@ -84,8 +89,6 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
               ethers.utils.parseUnits(_amount)
             );
             console.log(await signer.getAddress(), "your on right");
-            setEnterAmount(0);
-            alert("Working up");
 
             Txn = await connectedContract.bet(
               _id,
@@ -94,7 +97,6 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
               userResult
             );
             await Txn.wait();
-            setLoad_Win(true);
             return;
           }
         }
@@ -139,12 +141,21 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
             userResult
           );
           await Txn.wait();
-          setLoad_Win(true);
           setEnterAmount("");
           alert("Working down");
+          setItems((prevState) => ({
+            ...prevState,
+            betMessage: true,
+            airDropBetMessage: false,
+          }));
           if (_token == METABET_ADDRESS) {
             await Utils.Airdrop(address);
             alert("you've successfully gotten free token");
+            setItems((prevState) => ({
+              ...prevState,
+              betMessage: false,
+              airDropBetMessage: true,
+            }));
           }
           return;
         }
@@ -157,11 +168,19 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
   };
 
   useEffect(() => {
-    console.log("Window load", load_win);
+    // console.log("Window load", load_win);
     details();
   }, [Data_size, Data_total, load_win, enterAmount]);
 
   console.log("payout", payout);
+
+  // const test = () => {
+  //   setItems((prevState) => ({
+  //     ...prevState,
+  //     betMessage: false,
+  //     airDropBetMessage: true,
+  //   }));
+  // };
 
   return (
     <>
@@ -237,6 +256,7 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
             id="btn"
             style={{ background: "#fc4c1e" }}
             onClick={() => BetNow(id, token, enterAmount, betWinId)}
+            // onClick={test}
           >
             BET
           </button>

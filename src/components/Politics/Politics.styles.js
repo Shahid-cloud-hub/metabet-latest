@@ -786,14 +786,6 @@ export const Info = styled.div`
   background: #112533;
   border-radius: 10px;
   padding: 10px 15px;
-
-  @media screen and (max-width: 420px) {
-    padding: 10px;
-  }
-
-  @media screen and (max-width: 375px) {
-    padding: 10px;
-  }
   .win_wrapper {
     display: flex;
     flex-direction: column;
@@ -833,6 +825,14 @@ export const Info = styled.div`
       background: none;
       text-align: end;
     }
+  }
+
+  @media screen and (max-width: 420px) {
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 375px) {
+    padding: 10px;
   }
 
   .WIN {

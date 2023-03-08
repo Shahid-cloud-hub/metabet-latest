@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
@@ -6,8 +6,21 @@ import Nav from "../Components/Nav/Nav";
 import useBreakpoint from "../hooks/useBreakpoints";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { useEffect } from "react";
+import PopUpModel from "../components/PopUpModel/PopUpModel";
+import { Context } from "../Context";
 
 const ContainerWrapper = styled("div")`
+  display: flex;
+  position: relative;
+
+  .popup-model {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+  }
   .container {
     width: 100%;
     height: 100%;
@@ -58,6 +71,10 @@ const ContainerWrapper = styled("div")`
     }
   }
 
+  .active-popup {
+    filter: blur(8px);
+  }
+
   footer {
     grid-column: 1 / span 3;
   }
@@ -71,6 +88,9 @@ const ContainerWrapper = styled("div")`
 
 const Dashboard = () => {
   const { isDesktop, isTablet } = useBreakpoint();
+  const { items } = useContext(Context);
+
+  console.log(items, "dashboard");
 
   const result = window.location.pathname;
   useEffect(() => {}, [result]);
@@ -78,7 +98,13 @@ const Dashboard = () => {
   return (
     <>
       <ContainerWrapper>
-        <div className="container">
+        <div
+          className={
+            items?.betMessage || items?.airDropBetMessage
+              ? "container active-popup"
+              : "container"
+          }
+        >
           <header>
             <Nav />
           </header>
@@ -94,6 +120,16 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {items?.betMessage && (
+          <div className="popup-model">
+            <PopUpModel />
+          </div>
+        )}
+        {items?.airDropBetMessage && (
+          <div className="popup-model">
+            <PopUpModel />
+          </div>
+        )}
       </ContainerWrapper>
     </>
   );

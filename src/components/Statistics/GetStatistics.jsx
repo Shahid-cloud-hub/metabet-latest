@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useAxios } from "../../hooks/useAxios";
-import { betNowData } from "../../JasonData/FeaturedBannerData";
+import { andrew, betNowData } from "../../JasonData/FeaturedBannerData";
 import Loading from "../Loading/Loading";
 import { StatContainer } from "../Politics/Politics.styles";
 import Tabs from "../TabFifa/Tab";
@@ -9,11 +9,23 @@ import Times from "../Time/Times";
 import { Info, StatisticsContainer } from "./Stats.syle";
 import clock1 from "../../assets/images/BitcoinPrice/clock1.png";
 import clock2 from "../../assets/images/BitcoinPrice/clock2.png";
+import BetNowBtns from "../BetNowBtns/BetNowBtns";
 
 const GetStatistics = () => {
   let { group, title, id } = useParams();
+  const { pathname } = useLocation();
   const { fetchData, response, loading } = useAxios();
+
+  const p_1 = `/trending-event/andrew-tate/statistics/${id}`;
+  const p_2 = "/ufc/ufc-285";
+  const p_3 = "/ufc/ufc-286";
   const [addStyle, setAddStyle] = useState();
+
+  const callback = (id) => {
+    setAddStyle(id);
+  };
+
+  console.log("Get Parent ", addStyle);
 
   const getBanners = async () => {
     await fetchData({
@@ -30,6 +42,8 @@ const GetStatistics = () => {
   }, [group, title, id]);
 
   console.log(response, "get Statisticss");
+  // const pathname = window.location.pathname;
+  console.log(pathname, "hshds");
 
   return (
     <>
@@ -198,21 +212,7 @@ const GetStatistics = () => {
         )
       )}
       <Info>
-        {betNowData.map((item) => (
-          <div className="WIN" key={item.id}>
-            <p> {item.name}</p>
-            <button
-              onClick={() => setAddStyle(item.id)}
-              style={
-                item.id === addStyle
-                  ? { background: "#fc4c1e" }
-                  : { background: "#7b7b7b" }
-              }
-            >
-              {item.btn}
-            </button>
-          </div>
-        ))}
+        <BetNowBtns getPath={pathname} callback={callback} />
       </Info>
       <Tabs
         getId={item?.smart_contract_id}

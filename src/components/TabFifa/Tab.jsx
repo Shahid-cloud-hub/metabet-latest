@@ -34,6 +34,7 @@ function Tabs(props) {
   const review_3 = "https://youtu.be/1ObdFaUL7nc";
 
   const pathname = window.location.pathname;
+
   return (
     <TabContainer>
       <div className="tab-wrapper">

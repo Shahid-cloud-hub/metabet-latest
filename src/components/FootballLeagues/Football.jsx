@@ -51,7 +51,7 @@ const AllFootballEvents = ({ group_type }) => {
 
   const highlightsData = response?.map((item) => item?.event?.highlights[0]);
 
-  console.log("res", response);
+  // console.log("res", response);
   return (
     <FootballLeaguesContainer>
       <div className="football-loading-wrapper">

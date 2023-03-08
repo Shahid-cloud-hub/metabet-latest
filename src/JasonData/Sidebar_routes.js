@@ -10,6 +10,24 @@ import BitcoinW from "../assets/images/BitcoinW.webp";
 import DXY from "../assets/images/DXY.webp";
 import DXYW from "../assets/images/DXYW.webp";
 import FootballW from "../assets/images/FootballW.webp";
+import Basketball from "../assets/images/Basketball.png";
+import BasketballW from "../assets/images/BasketballW.webp";
+import AmericanFootball from "../assets/images/AmericanFootball.png";
+import AmericanFootballW from "../assets/images/AmericanFootballW.webp";
+import Tennis from "../assets/images/Tennis.png";
+import TennisW from "../assets/images/TennisW.webp";
+import Baseball from "../assets/images/Baseball.png";
+import BaseballW from "../assets/images/BaseballW.webp";
+import Snooker from "../assets/images/Snooker.png";
+import SnookerW from "../assets/images/SnookerW.png";
+import Golf from "../assets/images/Golf.png";
+import GolfW from "../assets/images/GolfW.png";
+import Volleyball from "../assets/images/Volleyball.png";
+import VolleyballW from "../assets/images/VolleyballW.webp";
+import Darts from "../assets/images/Darts.png";
+import DartsW from "../assets/images/DartsW.png";
+import Horse from "../assets/images/Horse.png";
+import HorseW from "../assets/images/HorseW.png";
 
 // currcency Logos //
 import currency_1 from "../assets/images/FeaturedEvent/bitmart.png";
@@ -50,23 +68,23 @@ export const first_array = [
 ];
 export const sec_array = [
   {
-    display_name: "DXY",
-    route: "/dxy",
+    display_name: "Currencies",
+    route: "/currencies",
     icon: DXY,
     white: DXYW,
   },
   {
-    display_name: "Bitcoin Price Bets",
-    route: "/bitcoin",
+    display_name: "Crypto Currencies",
+    route: "/crypto-currencies",
     icon: Bitcoin,
     white: BitcoinW,
   },
-  {
-    display_name: "Ethereum Price Bets",
-    route: "/ethereum",
-    icon: Ethere,
-    white: EthereW,
-  },
+  // {
+  //   display_name: "Ethereum Price Bets",
+  //   route: "/ethereum",
+  //   icon: Ethere,
+  //   white: EthereW,
+  // },
   {
     display_name: "Football",
     route: "/football",
@@ -74,12 +92,61 @@ export const sec_array = [
     white: FootballW,
   },
   {
+    display_name: "Basketball",
+    route: "/basketball",
+    icon: Basketball,
+    white: BasketballW,
+  },
+  {
+    display_name: "Tennis",
+    route: "/tennis",
+    icon: Tennis,
+    white: TennisW,
+  },
+  {
+    display_name: "Football",
+    route: "/american-football",
+    icon: AmericanFootball,
+    white: AmericanFootballW,
+  },
+  {
     display_name: "Cricket",
     route: "/cricket",
     icon: Cricket,
     white: CricketW,
   },
+  {
+    display_name: "Baseball",
+    route: "/baseball",
+    icon: Baseball,
+    white: BaseballW,
+  },
 
+  {
+    display_name: "Snooker",
+    route: "/snooker",
+    icon: Snooker,
+    white: SnookerW,
+  },
+  {
+    display_name: "Golf",
+    route: "/golf",
+    icon: Golf,
+    white: GolfW,
+  },
+  {
+    display_name: "Volleyball",
+    route: "/volleyball",
+    icon: Volleyball,
+    white: VolleyballW,
+  },
+
+  {
+    display_name: "Boxing",
+    route: "/boxing",
+    icon: Boxing,
+    white: BoxingW,
+  },
   {
     display_name: "UFC",
     route: "/ufc",
@@ -87,11 +154,23 @@ export const sec_array = [
     white: BoxingW,
   },
   {
-    display_name: "Trending Events",
-    route: "/politics",
-    icon: Politics,
-    white: PoliticsW,
+    display_name: "Darts",
+    route: "/darts",
+    icon: Darts,
+    white: DartsW,
   },
+  {
+    display_name: "Horse Racing",
+    route: "/horse-racing",
+    icon: Horse,
+    white: HorseW,
+  },
+  // {
+  //   display_name: "Trending Events",
+  //   route: "/politics",
+  //   icon: Politics,
+  //   white: PoliticsW,
+  // },
 ];
 
 export const third_array = [

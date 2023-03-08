@@ -22,7 +22,7 @@ const WorldcupLandingPage = () => {
     getEvent();
   }, []);
 
-  console.log("res", response);
+  // console.log("res", response);
 
   useEffect(() => {
     window.scrollTo(0, 0);

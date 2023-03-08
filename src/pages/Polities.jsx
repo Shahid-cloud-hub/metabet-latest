@@ -6,8 +6,6 @@ import useBreakpoint from "../hooks/useBreakpoints";
 import { Politics_banner_data } from "../JasonData/FeaturedBannerData";
 
 const Polities = () => {
-  const { isDesktop } = useBreakpoint();
-
   return (
     <>
       <PoliticsContainer

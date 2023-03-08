@@ -631,6 +631,48 @@ export const Info = styled.div`
   background: #112533;
   border-radius: 10px;
   padding: 10px 15px;
+  gap: 10px;
+
+  .win_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .betStat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #0a1a25;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 135px;
+    width: 100%;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    span {
+      font-family: "Inter";
+      font-size: 10px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    #clr {
+      color: #fc4c1e;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      border: none;
+      background: none;
+      text-align: end;
+    }
+  }
 
   @media screen and (max-width: 420px) {
     padding: 10px;
@@ -647,7 +689,7 @@ export const Info = styled.div`
     background: #0a1a25;
     border-radius: 10px;
     padding: 10px;
-    max-width: 205px;
+    max-width: 133px;
     width: 100%;
     gap: 10px;
     .title {
@@ -674,7 +716,7 @@ export const Info = styled.div`
       border: none;
       font-size: 14px;
       cursor: pointer;
-      padding: 10px 65px;
+      padding: 10px 55px;
     }
     span {
       font-weight: 500;

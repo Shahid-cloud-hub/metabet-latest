@@ -103,7 +103,7 @@ const PoliticsDetails = () => {
                   {item?.btn}
                 </button>
               </div>
-              {state[0]?.id === 10 && (
+              {state?.id === 10 && (
                 <div className="betStat">
                   <div>
                     <span>{item?.Pool_size}</span>

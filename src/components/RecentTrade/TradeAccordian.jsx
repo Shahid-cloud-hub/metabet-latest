@@ -12,7 +12,7 @@ const TradeAccordian = (props) => {
   const [showAccord, setShowAccord] = useState();
   const [bets, setAllBets] = useState([]);
 
-  console.log(props.id, "all best");
+  // console.log(props.id, "all best");
 
   useEffect(() => {
     Utils.AllBets(props.id).then(function (data) {
@@ -20,7 +20,7 @@ const TradeAccordian = (props) => {
     });
   }, [props?.id]);
 
-  console.log("All bets tab", bets);
+  // console.log("All bets tab", bets);
 
   const RecentTradeData = [
     {

@@ -5,6 +5,27 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: "junegull";
+  src: local("junegull"),
+    url("./Font/junegull/junegull.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "MostraNuova";
+  src: local("MostraNuova"),
+    url("./Font/MostraNuova/Mostra\ Nuova\ Bold.otf") format("truetype");
+
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"),
+    url("./Font/Inter/Inter-Bold.ttf ") format("truetype");
+  font-weight: bold;
+}
+
 body {
   margin: 0;
   font-family: "CabinetGroteskBold";

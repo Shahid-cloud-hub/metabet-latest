@@ -11,7 +11,7 @@ import { Info, StatisticsContainer } from "./Stats.syle";
 const StatsComponent = () => {
   let { group, title, id } = useParams();
 
-  console.log(group, title, id, "UFC Componet");
+  // console.log(group, title, id, "UFC Componet");
 
   const { fetchData, response, loading } = useAxios();
   const [addStyle, setAddStyle] = useState();
@@ -28,8 +28,6 @@ const StatsComponent = () => {
     getBanners();
     window.scrollTo(0, 0);
   }, [group, title, id]);
-
-  console.log("res", item?.smart_contract_id);
 
   return (
     <>

@@ -18,163 +18,185 @@ export const Container1 = styled.div`
 
   .fox-stats {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
-  }
-  #rate {
-    font-size: 14px;
-    color: #999999;
-    font-family: "MostraNuova";
-    font-style: normal;
-    font-weight: 500;
-  }
-  #dollar_rate {
-    font-size: 22px;
-    line-height: 143.7%;
-    color: #ffffff;
-    text-shadow: 0px 0px 30px #ffffff;
-    font-family: "Inter";
-  }
-  #dollar {
-    font-family: "Inter";
-    font-size: 18px;
-    color: #ffffff;
-    text-shadow: 0px 0px 30px #ffffff;
-  }
-  span {
-    font-size: 16px;
-    color: #999999;
-    font-family: "Inter";
-    font-style: normal;
-    font-size: 16px;
+    gap: 20px;
   }
 
   .text {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-
-    #rate {
-      font-family: "Junegull";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      color: #ffffff;
-    }
-  }
-  .balance-sheet {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 330px;
-    min-height: 162px;
-    background: #1f313d;
-    border: 1px solid #36404f;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 7px;
+    max-width: 108px;
+    min-height: 72px;
+    background: linear-gradient(180deg, #1c1c1c 39.58%, #28516b 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 4px #1e90ff;
     border-radius: 8px;
-    padding: 10px 20px;
-    gap: 15px;
-    div {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-  .balance-sheet1 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 418px;
-    min-height: 162px;
-    padding: 10px;
-    gap: 20px;
-  }
-  .true {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  .trueai {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .list {
-    display: flex;
-    justify-content: space-around;
-    div {
-      display: flex;
-      gap: 10px;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  .trusc-withdraw {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    label {
-      color: #637592;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      input {
-        background: transparent;
-        border: none;
-        color: #ffffff;
-        padding: 5px;
-        max-width: 60px;
-        font-size: 20px;
-      }
-      input::placeholder {
-        color: #ffffff;
-        font-size: 20px;
-        text-align: end;
-      }
-    }
-  }
-  .trusc-withdraw1 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    div {
-      align-items: end;
-      flex-direction: column;
-      display: flex;
-      span {
-        align-self: center;
-        padding-left: 40px;
-      }
+    #title {
+      font-family: "MostraNuova";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+      color: #5f9ea0;
     }
-    label {
-      color: #637592;
+    input {
+      background-color: transparent;
+      width: 100%;
+      max-width: 75px;
+      padding: 5px 5px;
+      text-align: center;
+      border: none;
+    }
+    input::placeholder {
+      font-family: "MostraNuova";
+      font-style: normal;
+      font-weight: 700;
       font-size: 20px;
-      display: flex;
-      align-items: center;
-      input {
-        background: transparent;
-        border: none;
-        color: #ffffff;
-        padding: 5px;
-        max-width: 115px;
-        font-size: 20px;
-      }
-      input::placeholder {
-        color: #ffffff;
-        font-size: 20px;
-        text-align: end;
-      }
+      line-height: 143.7%;
+      color: #0070c0;
+      text-shadow: 0px 0px 30px #000000;
     }
   }
 `;
 
 export const Balance = styled.div`
-  width: 100%;
-  max-width: 985px;
-  min-height: 506px;
-  background: #1f313d;
-  border: 1px solid #36404f;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  .liquidity-pool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    max-width: 473px;
+    min-height: 225px;
+    background: linear-gradient(180deg, #1f313d 24.68%, #1c1c1c 63.46%);
+    border: 1px solid #5f9ea0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    gap: 60px;
+
+    .heading {
+      padding-top: 10px;
+      text-align: center;
+      span {
+        font-family: "MostraNuova";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 21px;
+        line-height: 95%;
+        color: #5f9ea0;
+      }
+      hr {
+        height: 2px;
+        width: 433px;
+        background: #5f9ea0;
+        box-shadow: 0px 0px 0px #ffffff;
+        border: none;
+        margin-top: 10px;
+      }
+    }
+    .heading1 {
+      padding-top: 10px;
+      text-align: center;
+      span {
+        font-family: "MostraNuova";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 21px;
+        line-height: 95%;
+        color: #1e90ff;
+      }
+      hr {
+        height: 2px;
+        width: 433px;
+        background: #1e90ff;
+        box-shadow: 0px 0px 0px #ffffff;
+        border: none;
+        margin-top: 10px;
+      }
+    }
+    .convert {
+      display: flex;
+      align-items: center;
+    }
+    .balance {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0px 35px;
+
+      .icon {
+        span {
+          font-family: "Junegull";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 140%;
+          color: #ffffff;
+        }
+      }
+    }
+
+    content {
+      position: absolute;
+      display: none;
+    }
+
+    .truai {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      label {
+        font-size: 15px;
+        color: #637592;
+        display: flex;
+        gap: 5px;
+
+        input {
+          border: none;
+          background: transparent;
+          padding-left: 10px;
+          max-width: 89px;
+        }
+        input::placeholder {
+          font-size: 15px;
+          color: #ffffff;
+        }
+        #icon {
+          margin-right: 40px;
+        }
+      }
+
+      span {
+        font-family: "MostraNuova";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 95%;
+        color: #ffffff;
+      }
+
+      #grey {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 95%;
+        color: #637592;
+      }
+      #blue {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 95%;
+        color: #3d6eff;
+      }
+    }
+  }
+
   .currency {
     display: flex;
     align-items: center;
@@ -185,7 +207,7 @@ export const Balance = styled.div`
       flex-direction: column;
       gap: 10px;
       #currency {
-        font-family: "Junegull";
+        font-family: "junegull";
         font-style: normal;
         font-weight: 400;
         font-size: 24px;
