@@ -11,27 +11,54 @@ const BetContainer = (props) => {
   const [tReturned, setTReturned] = useState(0);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
-  //console.log("first", props.data);
+  // console.log("data", props?.data);
   //console.log("first", props.name);
   const arr = [];
   const check = (i) => {
-    Utils.AllBets(i).then(function(data){
+    Utils.AllBets(i).then(function (data) {
       setItem(data);
-    })
-    return item.filter((i) => i[0] === metaMaskAddress.metaMaskAddress.toString());
-  }
+    });
+    // console.log("first", item);
+    return item;
+  };
 
-  if(props.data.length > 0){
+  if (props?.data?.length > 0) {
     for (let i = 0; i < props.data.length; i++) {
       const s = check(props.data[i]);
       arr.push(s);
     }
   }
 
-    console.log(arr);
-    //console.log(arr.forEach((i)=>i.filter((e) => e[0] == "0x6115a58F27D500511f17c5675c7220266e866199")));
-    //console.log(arr.filter((e) => e[0] === metaMaskAddress.metaMaskAddress.toString()).length)
-    0x6115a58F27D500511f17c5675c7220266e866199
+  // console.log("data", data_1);
+
+  let eventData = [];
+
+  const data_3 = arr?.forEach((j) => {
+    if (j[0]?.user == "0x6115a58F27D500511f17c5675c7220266e866199") {
+      eventData?.push(j);
+    }
+  });
+
+  let finallArr = [];
+  let finallArr_1 = [];
+  let finallArr_2 = [];
+
+  eventData?.forEach((x) => x.forEach((y) => finallArr?.push(y)));
+  // eventData?.forEach((x) => finallArr?.push(x));
+  // finallArr?.forEach((y) => finallArr_1?.push(y));
+  // finallArr_1?.forEach((z) => finallArr_2?.push(z));
+
+  // const filter = eventData.forEach((e) => console.log(e.length));
+  const filter = eventData?.length;
+  // console.log(bets, "bets");
+  // console.log(eventData, "eventData");
+  console.log(finallArr, "finallArr");
+
+  useEffect(() => {}, []);
+
+  //console.log(arr.forEach((i)=>i.filter((e) => e[0] == "0x6115a58F27D500511f17c5675c7220266e866199")));
+  //console.log(arr.filter((e) => e[0] === metaMaskAddress.metaMaskAddress.toString()).length)
+  0x6115a58f27d500511f17c5675c7220266e866199;
   if (metaMaskAddress.metaMaskAddress) {
     Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
       function (data) {
@@ -44,7 +71,7 @@ const BetContainer = (props) => {
   //console.log(otherBets)
 
   const totalBets = (field, value) => {
-    const array = props.name == "all" ? bets : arr;
+    const array = props.name == "all" ? bets : finallArr;
     const filter = array.filter((item) => item[field] === value);
     return filter;
   };

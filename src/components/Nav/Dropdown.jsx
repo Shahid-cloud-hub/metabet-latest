@@ -39,6 +39,7 @@ function Dropdown() {
     Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(
       function (data) {
         data === 0 ? setBalance(null) : setBalance(data);
+        console.log(data, "test");
       }
     );
   }

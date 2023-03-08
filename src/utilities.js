@@ -133,7 +133,7 @@ const Utils = {
   getTotalReturned,
   userStatus,
   AllUserBets_id,
-  currentOdd
+  currentOdd,
 };
 
 export default Utils;

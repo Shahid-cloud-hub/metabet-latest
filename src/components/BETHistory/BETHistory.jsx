@@ -14,7 +14,7 @@ const BetHistory = () => {
   const [bets, setBets] = useState([]);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
-  if(getName == null){
+  if (getName == null) {
     setGetName("all");
   }
 
@@ -26,7 +26,7 @@ const BetHistory = () => {
   // let title = "trending-event";
   let title = getName;
 
-  console.log(getName)
+  console.log(getName);
 
   const { fetchData, response } = useAxios();
 
@@ -47,22 +47,31 @@ const BetHistory = () => {
     (item) => item?.event?.highlights[0]?.stats?.data?.smart_contract_id
   );
 
-  const arrData = hightlightData == undefined ? [] : Object.values(hightlightData);
+  const arrData =
+    hightlightData == undefined ? [] : Object.values(hightlightData);
 
   if (metaMaskAddress.metaMaskAddress) {
     if (getName != "all") {
       Utils.AllUserBets_id(
-        metaMaskAddress.metaMaskAddress.toString(), arrData).then(function (data) {
+        metaMaskAddress.metaMaskAddress.toString(),
+        arrData
+      ).then(function (data) {
         setBets(data);
       });
-    } else if(getName == "dxy" || getName == "ufc" || getName == "ethereum"
-      || getName == "bitcoin" || getName == "football" || getName == "cricket"){
-        Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
-          function (data) {
-            setBets(data);
-          }
-        );
-      }
+    } else if (
+      getName == "dxy" ||
+      getName == "ufc" ||
+      getName == "ethereum" ||
+      getName == "bitcoin" ||
+      getName == "football" ||
+      getName == "cricket"
+    ) {
+      Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
+        function (data) {
+          setBets(data);
+        }
+      );
+    }
   }
 
   // if (metaMaskAddress.metaMaskAddress) {
@@ -85,7 +94,7 @@ const BetHistory = () => {
         <div className="filter-btn">
           <FilterTabBtns tabItem={Filter} callback={callback} />
         </div>
-        <BetContainer data={arrData} name = {getName} />
+        <BetContainer data={arrData} name={getName} />
         {/* there we have use anonymous function */}
         {/* <button id="history_btn" onClick={() => setShow((prev) => !prev)}> */}
         <button id="history_btn">
