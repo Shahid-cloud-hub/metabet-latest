@@ -1,20 +1,55 @@
 import { React, useState, useEffect } from "react";
 import { ContainerBet } from "./BetContainer.styles";
+import { useAxios } from "../../hooks/useAxios";
 import { betData } from "./BetData";
 import { useSelector } from "react-redux";
 import Utils from "../../utilities.js";
 
-const BetContainer = ({ bets }) => {
-  // const [bets, setBets] = useState([]);
+const BetContainer = (props) => {
+  const [bets, setBets] = useState([]);
+  const [item, setItem] = useState([]);
   const [tReturned, setTReturned] = useState(0);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
-  console.log("first", bets);
+  //console.log("first", props.data);
+  //console.log("first", props.name);
+  const arr = [];
+  const check = (i) => {
+    Utils.AllBets(i).then(function(data){
+      setItem(data);
+    })
+    return item.filter((i) => i[0] === metaMaskAddress.metaMaskAddress.toString());
+  }
 
-  const totalBets = (array, field, value) => {
+  if(props.data.length > 0){
+    for (let i = 0; i < props.data.length; i++) {
+      const s = check(props.data[i]);
+      arr.push(s);
+    }
+  }
+
+    console.log(arr);
+    //console.log(arr.forEach((i)=>i.filter((e) => e[0] == "0x6115a58F27D500511f17c5675c7220266e866199")));
+    //console.log(arr.filter((e) => e[0] === metaMaskAddress.metaMaskAddress.toString()).length)
+    0x6115a58F27D500511f17c5675c7220266e866199
+  if (metaMaskAddress.metaMaskAddress) {
+    Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
+      function (data) {
+        setBets(data);
+      }
+    );
+  }
+
+  //console.log(bets)
+  //console.log(otherBets)
+
+  const totalBets = (field, value) => {
+    const array = props.name == "all" ? bets : arr;
     const filter = array.filter((item) => item[field] === value);
     return filter;
   };
+
+  //console.log(totalBets(bets,1, "0x0000000000000000000000000000000000000000"))
 
   const totalValue = (array, field) => {
     let sum = 0;
@@ -70,14 +105,14 @@ const BetContainer = ({ bets }) => {
                     <span>
                       {metaMaskAddress.metaMaskAddress == null
                         ? item.td_2
-                        : totalBets(bets, 1, item.addr).length}
+                        : totalBets(1, item.addr).length}
                     </span>
                     <span>{item.td_3}</span>
                     <span>{item.td_4}</span>
                     <span>
                       {metaMaskAddress.metaMaskAddress == null
                         ? item.td_6
-                        : totalValue(totalBets(bets, 1, item.addr), 3)}
+                        : totalValue(totalBets(1, item.addr), 3)}
                     </span>
                     <span>
                       {metaMaskAddress.metaMaskAddress == null ||
