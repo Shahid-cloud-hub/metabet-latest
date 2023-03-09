@@ -132,6 +132,8 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
             BET_ADDRESS,
             ethers.utils.parseUnits(_amount)
           );
+          await Txn.wait();
+
           console.log(await signer.getAddress(), "down side");
 
           Txn = await connectedContract.bet(
@@ -140,6 +142,7 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
             ethers.utils.parseUnits(_amount),
             userResult
           );
+
           await Txn.wait();
           setEnterAmount("");
           alert("Working down");
@@ -205,7 +208,7 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
               <img src={img} alt="img" />
             </div>
           </div>
-          <input type="text" value={Data_total} disabled />
+          <input type="text" value={Data_total ? Data_total : 0} disabled />
         </label>
         <label>
           <div className="status_3">
@@ -213,7 +216,7 @@ function Dropdown({ id, token, img, amount, name, win, betWinId }) {
               <img src={img} alt="img" />
             </div>
           </div>
-          <input type="text" value={Data_size} disabled />
+          <input type="text" value={Data_size ? Data_size : 0} disabled />
         </label>
         <label>
           <div className="status_4">

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import { useEffect } from "react";
 import PopUpModel from "../components/PopUpModel/PopUpModel";
 import { Context } from "../Context";
+import Confetti from "react-confetti";
 
 const ContainerWrapper = styled("div")`
   display: flex;
@@ -89,15 +90,19 @@ const ContainerWrapper = styled("div")`
 const Dashboard = () => {
   const { isDesktop, isTablet } = useBreakpoint();
   const { items } = useContext(Context);
+  const [celebRemove] = useState(true);
 
   console.log(items, "dashboard");
 
-  const result = window.location.pathname;
-  useEffect(() => {}, [result]);
+  const availableWidth = window?.screen?.availWidth;
 
   return (
     <>
       <ContainerWrapper>
+        {items?.betMessage ||
+          (items?.airDropBetMessage && celebRemove && (
+            <Confetti width={availableWidth} height={1200} gravity={0.77} />
+          ))}
         <div
           className={
             items?.betMessage || items?.airDropBetMessage

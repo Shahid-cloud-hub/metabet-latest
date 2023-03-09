@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 function Tabs(props) {
   let { group, title, id } = useParams();
   const metaMaskAddress = useSelector((state) => state.wallet);
+  const [currentAccount, setCurrentAccount] = useState("");
   const { ethereum } = window;
 
   useEffect(() => {

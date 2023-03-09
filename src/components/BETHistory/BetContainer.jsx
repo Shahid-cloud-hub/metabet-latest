@@ -51,7 +51,10 @@ const BetContainer = (props) => {
   console.log(betArr);
 
   const data_3 = betArr?.forEach((j) => {
-    if (j[0]?.user == "0x6115a58F27D500511f17c5675c7220266e866199") {
+    if (
+      j[0]?.user.toUpperCase() ==
+      metaMaskAddress.metaMaskAddress.toString().toUpperCase()
+    ) {
       eventData?.push(j);
     }
   });
@@ -61,29 +64,6 @@ const BetContainer = (props) => {
   // let finallArr_2 = [];
 
   eventData?.forEach((x) => x.forEach((y) => finallArr?.push(y)));
-  // eventData?.forEach((x) => finallArr?.push(x));
-  // finallArr?.forEach((y) => finallArr_1?.push(y));
-  // finallArr_1?.forEach((z) => finallArr_2?.push(z));
-
-  // const filter = eventData.forEach((e) => console.log(e.length));
-  // const filter = eventData?.length;
-  // console.log(bets, "bets");
-  // console.log(eventData, "eventData");
-  // console.log(finallArr, "finallArr");
-
-  //console.log(arr.forEach((i)=>i.filter((e) => e[0] == "0x6115a58F27D500511f17c5675c7220266e866199")));
-  //console.log(arr.filter((e) => e[0] === metaMaskAddress.metaMaskAddress.toString()).length)
-  // 0x6115a58f27d500511f17c5675c7220266e866199;
-  // if (metaMaskAddress.metaMaskAddress) {
-  //   Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
-  //     function (data) {
-  //       setBets(data);
-  //     }
-  //   );
-  // }
-
-  //console.log(bets)
-  //console.log(otherBets)
 
   const totalBets = (field, value) => {
     const array = props.name == "all" ? bets : finallArr;

@@ -92,15 +92,15 @@ const BetHistory = () => {
           <span>BET HISTORY</span>
         </div>
         <div className="filter-btn">
-          <FilterTabBtns tabItem={Filter} callback={callback} />
+          <FilterTabBtns tabItem={Filter} callback={callback} betHis={true} />
         </div>
         <BetContainer data={arrData} name={getName} />
         {/* there we have use anonymous function */}
         {/* <button id="history_btn" onClick={() => setShow((prev) => !prev)}> */}
-        <button id="history_btn">
+        {/* <button id="history_btn">
           Connect Wallet
           <img src={fox} alt="fox" />
-        </button>
+        </button> */}
         {/* <UfcContainer>
           <div className="Headeline">
             <span>ACTIVE BET's</span>

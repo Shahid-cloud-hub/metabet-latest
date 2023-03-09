@@ -35,18 +35,17 @@ function Dropdown() {
       ? "0.0000"
       : truncateEthAddress(metaMaskAddress.metaMaskAddress.toString());
 
-  if (metaMaskAddress.metaMaskAddress) {
-    Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(
-      function (data) {
-        data === 0 ? setBalance(null) : setBalance(data);
-        // console.log(data, "test");
-      }
-    );
-  }
-
   useEffect(() => {
+    if (metaMaskAddress.metaMaskAddress) {
+      Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(
+        function (data) {
+          data === 0 ? setBalance(null) : setBalance(data);
+          // console.log(data, "test");
+        }
+      );
+    }
     // console.log("balance", balance);
-  }, [balance]);
+  }, [metaMaskAddress, balance]);
 
   useEffect(() => {
     // console.log(metaMaskAddress, "metaMaskAddress");

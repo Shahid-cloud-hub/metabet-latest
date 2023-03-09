@@ -67,9 +67,9 @@ const AllFootballEvents = ({ group_type }) => {
                 <Loading />
               </div>
             ) : (
-              highlightsData?.map((item, index) => (
+              highlightsData?.map((item) => (
                 <>
-                  <div className="card" key={index}>
+                  <div className="card" key={item._id}>
                     <div className="card__header">
                       <img src={item?.data?.background_img} alt="" />
                     </div>

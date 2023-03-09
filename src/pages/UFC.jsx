@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import RegularFootBallBanners from "../Components/RegularFootBall/RegularFootBallBanners";
 import { UFCMainBanners } from "../JasonData/UFC";
@@ -6,6 +6,10 @@ import { UFCMainBanners } from "../JasonData/UFC";
 const UFC = () => {
   const location = useLocation();
   const { pathname } = location;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const p_1 = "/ufc/ufc-fight-night";
   const p_2 = "/ufc/ufc-285";
