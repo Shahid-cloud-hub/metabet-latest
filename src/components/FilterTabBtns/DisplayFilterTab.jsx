@@ -70,17 +70,17 @@ const DisplayFilterTab = ({ itemData, smartContractId, getName }) => {
   };
 
   const formatDate = (seconds) => {
-    const s = new Date(seconds * 1000).toLocaleString("en-US");
+    const s = new Date(seconds * 1000).toLocaleDateString("en-US");
     return s;
   };
 
   console.log(getEventName(finallArr[0]?.eventId), "test");
-  console.log(getEventName(formatDate(Number(finallArr[0]?.timestamp))), "test");
+  //console.log(getEventName(formatDate(1678269850)), "test");
   console.log(checkOdd(finallArr[0]?.eventId, finallArr[0]?.result, finallArr[0]?.token), "test");
 
   return (
     <ContainerBet>
-      {itemData?.map((item) => {
+      {finallArr?.map((item) => {
         return (
           <>
             <div className="betHistory-container">
@@ -90,24 +90,24 @@ const DisplayFilterTab = ({ itemData, smartContractId, getName }) => {
                 </div>
                 <div className="table-wrapper">
                   <div className="bet-th">
-                    <span>{item.th_1}</span>
-                    <span>{item.th_2}</span>
+                    <span>{"Date"}</span>
+                    <span>{"Event"}</span>
                   </div>
                   <div className="bet-td">
-                    <span>{item.td_1}</span>
-                    <span>{item.td_2}</span>
+                    <span>{formatDate(Number(item.timestamp))}</span>
+                    <span>{getEventName(item.eventId)[0]+"/"+getEventName(item.eventId)[1]}</span>
                   </div>
                 </div>
                 <div className="table-wrapper">
                   <div className="bet-th">
-                    <span>{item.th_3}</span>
-                    <span>{item.th_4}</span>
-                    <span>{item.th_5}</span>
+                    <span>{"Bet Amount"}</span>
+                    <span>{"Blockchain"}</span>
+                    <span>{"Current Odds"}</span>
                   </div>
                   <div className="bet-td1">
-                    <span>{item.td_3}</span>
+                    <span>{Number(item.amount)/1e18}</span>
                     <img src={item.td_4} alt="" />
-                    <span>{item.td_5}</span>
+                    <span>{checkOdd(item.eventId, item.result, item.token).toFixed(2)}</span>
                   </div>
                 </div>
                 <div className="status-btn">

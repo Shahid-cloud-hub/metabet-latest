@@ -51,19 +51,20 @@ const BetContainer = (props) => {
   console.log(betArr);
 
   const data_3 = betArr?.forEach((j) => {
-    if (
-      j[0]?.user.toUpperCase() ==
-      metaMaskAddress.metaMaskAddress.toString().toUpperCase()
-    ) {
       eventData?.push(j);
-    }
   });
 
   let finallArr = [];
   // let finallArr_1 = [];
   // let finallArr_2 = [];
 
-  eventData?.forEach((x) => x.forEach((y) => finallArr?.push(y)));
+  eventData?.forEach((x) => {
+    x.forEach((y) => {
+      if(y?.user.toUpperCase() == metaMaskAddress.metaMaskAddress.toString().toUpperCase()){
+        finallArr?.push(y)
+      }
+    });
+  });
 
   const totalBets = (field, value) => {
     const array = props.name == "all" ? bets : finallArr;
