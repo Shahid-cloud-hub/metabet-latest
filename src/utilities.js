@@ -116,6 +116,11 @@ const getTotalReturned = async (user, token) => {
   return Txn;
 };
 
+const getEventName = async (id) => {
+  const Txn = await connectedContract.getEvents([id]);
+  return Txn;
+};
+
 const userStatus = async (user, id) => {
   const Txn = await connectedContract.userPredictStatus(user, [id]);
   return Txn;
@@ -134,6 +139,7 @@ const Utils = {
   userStatus,
   AllUserBets_id,
   currentOdd,
+  getEventName
 };
 
 export default Utils;

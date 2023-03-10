@@ -5,81 +5,78 @@ import { ContainerBet } from "../ActiveBet/ActiveBet.styles";
 
 const DisplayFilterTab = ({ itemData, smartContractId, getName }) => {
   const [bets, setBets] = useState([]);
-  const [item, setItem] = useState([]);
-  const [tReturned, setTReturned] = useState(0);
+  const [odd, setOdd] = useState(0);
+  const [eventName, setEventName] = useState(null);
   const [betArr, setBetArr] = useState([]);
   const metaMaskAddress = useSelector((state) => state.wallet);
 
-  console.log("display", smartContractId);
+  //console.log("display", smartContractId);
 
   useEffect(() => {
-    // console.log("datas", props?.data);
-    if (metaMaskAddress.metaMaskAddress) {
-      Utils.AllUserBets(metaMaskAddress.metaMaskAddress.toString()).then(
-        function (data) {
-          setBets(data);
-        }
-      );
+    const check = async (i) => {
+      let data = await Utils.AllBets(i);
+
+      return data;
+    };
+    if (smartContractId?.length > 0) {
+      let arr = [];
+      for (let i = 0; i < smartContractId?.length; i++) {
+        const s = check(smartContractId[i]);
+        arr.push(s);
+      }
+
+      if (arr?.length > 0) {
+        (async () => {
+          arr = await Promise.all(arr);
+          setBetArr(arr);
+        })();
+      }
     }
-  }, [metaMaskAddress]);
-
-  // useEffect(() => {
-  //   const check = async (i) => {
-  //     let data = await Utils.AllBets(i);
-
-  //     return data;
-  //   };
-  //   if (smartContractId?.length > 0) {
-  //     let arr = [];
-  //     for (let i = 0; i < smartContractId?.length; i++) {
-  //       const s = check(smartContractId?.data[i]);
-  //       arr.push(s);
-  //     }
-
-  //     if (arr?.length > 0) {
-  //       (async () => {
-  //         arr = await Promise.all(arr);
-  //         setBetArr(arr);
-  //       })();
-  //     }
-  //   }
-  // }, [smartContractId?.length]);
+  }, [smartContractId?.length]);
 
   let eventData = [];
-  // console.log(betArr, 'array');
+  //console.log(betArr, 'array');
 
   const data_3 = betArr?.forEach((j) => {
-    if (
-      j[0]?.user.toUpperCase() ==
-      metaMaskAddress.metaMaskAddress.toString().toUpperCase()
-    ) {
-      eventData?.push(j);
-    }
+    eventData?.push(j);
   });
 
   let finallArr = [];
 
-  eventData?.forEach((x) => x.forEach((y) => finallArr?.push(y)));
+  eventData?.forEach((x) => {
+    //console.log(x, "x"); 
+    x.forEach((y) => {
+      if(y?.user.toUpperCase() == metaMaskAddress.metaMaskAddress.toString().toUpperCase()){
+        finallArr?.push(y)
+      }
+    }
+    )});
 
-  const totalBets = (field, value) => {
-    const array = getName == "all" ? bets : finallArr;
-    const filter = array.filter((item) => item[field] === value);
-    return filter;
+  //console.log(finallArr[0].eventId, 'array');
+
+  const checkOdd = (id, result, token) => {
+    Utils.currentOdd(id, result, token).then(function (data) {
+      setOdd(Number(data));
+    });
+    return odd;
   };
 
-  const totalValue = (array, field) => {
-    let sum = 0;
-    array.forEach((item) => (sum += Number(item[field])));
-    return sum / 1e18;
-  };
-
-  const totalReturned = (user, token) => {
-    Utils.getTotalReturned(user, token).then(function (data) {
-      setTReturned(Number(data));
+  const getEventName = (id) => {
+    Utils.getEventName(id).then(function (data) {
+      setEventName(data);
     });
 
-    return tReturned;
+    return [eventName == null ? "" : eventName[0].teamA, eventName == null ? "" : eventName[0].teamB];
   };
+
+  const formatDate = (seconds) => {
+    const s = new Date(seconds * 1000).toLocaleString("en-US");
+    return s;
+  };
+
+  console.log(getEventName(finallArr[0]?.eventId), "test");
+  console.log(getEventName(formatDate(Number(finallArr[0]?.timestamp))), "test");
+  console.log(checkOdd(finallArr[0]?.eventId, finallArr[0]?.result, finallArr[0]?.token), "test");
 
   return (
     <ContainerBet>
