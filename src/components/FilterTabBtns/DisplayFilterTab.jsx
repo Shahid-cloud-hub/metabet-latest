@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Utils from "../../utilities";
 import { ContainerBet } from "../ActiveBet/ActiveBet.styles";
+import MetabetMask from "../../abis/MetabetMask.json";
+import {
+  BET_ADDRESS
+} from "../../constants";
 
 const DisplayFilterTab = ({ itemData, smartContractId, getName }) => {
   const [bets, setBets] = useState([]);
@@ -11,6 +15,46 @@ const DisplayFilterTab = ({ itemData, smartContractId, getName }) => {
   const metaMaskAddress = useSelector((state) => state.wallet);
 
   //console.log("display", smartContractId);
+
+  const claim = async (_id, _token) => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        let chainId = await ethereum.request({ method: "eth_chainId" });
+        console.log("Connecteds to chains " + chainId);
+
+        // String, hex code of the chainId of the bsc test network
+        const testnetChainId = "0x61";
+        if (chainId !== goerli) {
+          alert("You are not connected to the Goerli Network!");
+          return;
+        } else {
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const connectedContract = new ethers.Contract(
+            BET_ADDRESS,
+            MetabetMask.abi,
+            signer
+          );
+
+          console.log("yes, Im here up");
+          console.log("Going to pop wallet now to pay gas...");
+
+          Txn = await connectedContract.claim(
+            [_id],
+            _token
+          );
+          await Txn.wait();
+          return;
+        }
+      } else {
+        console.log("Ethereum object doesn't exist!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const check = async (i) => {
@@ -52,7 +96,7 @@ const DisplayFilterTab = ({ itemData, smartContractId, getName }) => {
     }
     )});
 
-  //console.log(finallArr[0].eventId, 'array');
+  console.log(finallArr, 'array');
 
   const checkOdd = (id, result, token) => {
     Utils.currentOdd(id, result, token).then(function (data) {
